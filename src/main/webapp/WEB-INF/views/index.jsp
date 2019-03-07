@@ -6,10 +6,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Beer Me</title>
 </head>
 <body>
-<p>test</p>
-${model}
+<div>
+	<ul>
+	<c:forEach var="brewery" items="${ breweries }">
+		<li>${ brewery.name }</li>
+	</c:forEach>
+	</ul>
+</div>
 </body>
 </html>

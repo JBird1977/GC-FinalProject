@@ -18,7 +18,7 @@ public class BeerApiService {
 
 	private RestTemplate restTemplate = new RestTemplate();
 	
-	public List<Brewery> findBreweries(String search) {
+	public List<Brewery> findBreweries() {
 
 		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/breweries/")
 				.queryParam("key", key)
@@ -27,6 +27,8 @@ public class BeerApiService {
 		System.out.println("FIND BREWERIES SERVICE = " + url);
 		
 		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);
+		
+		System.out.println("RESPONSE = " + response);
 		
 		return response.getData();
 

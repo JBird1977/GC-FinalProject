@@ -39,4 +39,11 @@ public class BreweryResponse{
 	public void setTotalResults(Number totalResults){
 		this.totalResults = totalResults;
 	}
+	
+	@Override
+	public String toString() {
+		return "BreweryResponse [currentPage=" + currentPage + ", data=" + data + ", numberOfPages=" + numberOfPages
+				+ ", status=" + status + ", totalResults=" + totalResults + "]";
+	}
+	
 }

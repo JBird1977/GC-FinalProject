@@ -88,4 +88,12 @@ public class Brewery{
 	public void setWebsite(String website){
 		this.website = website;
 	}
+	@Override
+	public String toString() {
+		return "Brewery [createDate=" + createDate + ", description=" + description + ", established=" + established
+				+ ", id=" + id + ", images=" + images + ", isOrganic=" + isOrganic + ", locations=" + locations
+				+ ", name=" + name + ", status=" + status + ", statusDisplay=" + statusDisplay + ", updateDate="
+				+ updateDate + ", website=" + website + "]";
+	}
+	
 }
