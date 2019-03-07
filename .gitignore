@@ -3,3 +3,4 @@ bin
 .project
 .classpath
 /src/main/resources/config/application.properties
+/target/
