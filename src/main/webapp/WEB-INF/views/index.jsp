@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<p>test</p>
 ${model}
 </body>
 </html>
