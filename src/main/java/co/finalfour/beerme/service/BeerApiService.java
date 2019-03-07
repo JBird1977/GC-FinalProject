@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import co.finalfour.beerme.entity.Brewery;
-import co.finalfour.beerme.entity.BreweryResponse;
+import co.finalfour.beerme.entity.beer.Brewery;
+import co.finalfour.beerme.entity.beer.BreweryResponse;
 
 @Component
 public class BeerApiService {

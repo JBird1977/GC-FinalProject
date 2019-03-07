@@ -1,4 +1,4 @@
-package co.finalfour.beerme.entity;
+package co.finalfour.beerme.entity.beer;
 
 public class Glass{
    	private String createDate;
