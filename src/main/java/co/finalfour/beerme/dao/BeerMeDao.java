@@ -1,4 +1,4 @@
-package co.finalfour.beerme;
+package co.finalfour.beerme.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
