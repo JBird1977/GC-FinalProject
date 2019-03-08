@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
+import co.finalfour.beerme.entity.beer.BeerResponse;
 
 @Component
 public class BeerApiService {
@@ -19,19 +21,30 @@ public class BeerApiService {
 	private RestTemplate restTemplate = new RestTemplate();
 	
 	public List<Brewery> findBreweries() {
-
 		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/breweries/")
 				.queryParam("key", key)
 				.toUriString();
-		
-		System.out.println("FIND BREWERIES SERVICE = " + url);
-		
-		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);
-		
-		System.out.println("RESPONSE = " + response);
-		
+		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);		
 		return response.getData();
-
+	}
+	
+	public List<Beer> findBeers() {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beers/")
+				.queryParam("key", key)
+				.toUriString();
+		BeerResponse response = restTemplate.getForObject(url, BeerResponse.class);		
+		return response.getData();
+	}
+	
+	public List<Brewery> findBreweriesByLocation(String postalCode, String locality, String region) {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")		
+				.queryParam("postalCode", postalCode)
+				.queryParam("locality", locality)
+				.queryParam("region", region)
+				.queryParam("key", key)
+				.toUriString();
+		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);		
+		return response.getData();
 	}
 	
 }

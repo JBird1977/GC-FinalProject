@@ -15,6 +15,16 @@
 		<li>${ brewery.name }</li>
 	</c:forEach>
 	</ul>
+		
+	<c:forEach var="beer" items="${ beers }">
+	<ul>
+		<li>Name: ${ beer.name }</li>
+		<li>Type: ${ beer.type }</li>
+		<li>ABV: ${ beer.abv }</li>
+		<li>Glass: ${ beer.glass }</li>
+	</ul>	
+	</c:forEach>
+	
 </div>
 </body>
 </html>

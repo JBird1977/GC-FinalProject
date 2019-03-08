@@ -24,8 +24,11 @@ public class BeerMeController
     @RequestMapping
     public ModelAndView index()
     {
+    	ModelAndView mav = new ModelAndView("index");
     	List<Brewery> breweries = beerApiService.findBreweries();
-    	System.out.println("CONTROLLER BREWERIES = " + breweries);
-        return new ModelAndView("index", "breweries", breweries);
+    	List<Beer> beers = beerApiService.findBeers();
+    	mav.addObject("breweries", breweries);
+    	mav.addObject("beers", beers);
+        return mav;
     }
 }
