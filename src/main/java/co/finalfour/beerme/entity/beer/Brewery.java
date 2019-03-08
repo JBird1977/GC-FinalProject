@@ -2,13 +2,31 @@ package co.finalfour.beerme.entity.beer;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Type;
+
+@Entity
 public class Brewery{
+	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long breweryId;
+	
    	private String createDate;
    	private String description;
    	private String established;
+   	@Column(unique=true)
    	private String id;
+   	@Embedded @Type(type="Images")
    	private Images images;
    	private String isOrganic;
+   	@ElementCollection 
    	private List<Locations> locations;
    	private String name;
    	private String status;
@@ -88,6 +106,7 @@ public class Brewery{
 	public void setWebsite(String website){
 		this.website = website;
 	}
+	
 	@Override
 	public String toString() {
 		return "Brewery [createDate=" + createDate + ", description=" + description + ", established=" + established

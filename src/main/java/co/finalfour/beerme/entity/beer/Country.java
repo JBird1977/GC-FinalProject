@@ -1,12 +1,24 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Country{
+	
+	@Column(name="objCountryCreateDate")
    	private String createDate;
+	@Column(name="objCountryDisplayName")
    	private String displayName;
+	@Column(name="objCountryIsoCode")
    	private String isoCode;
+	@Column(name="objCountryIsoThree")
    	private String isoThree;
+	@Column(name="objCountryIsoName")
    	private String name;
+	@Column(name="objCountryIsoNumberCode")
    	private Number numberCode;
+	@Column(name="objCountryUrlTitle")
    	private String urlTitle;
 
  	public String getCreateDate(){
@@ -51,4 +63,12 @@ public class Country{
 	public void setUrlTitle(String urlTitle){
 		this.urlTitle = urlTitle;
 	}
+	
+	@Override
+	public String toString() {
+		return "Country [createDate=" + createDate + ", displayName=" + displayName + ", isoCode=" + isoCode
+				+ ", isoThree=" + isoThree + ", name=" + name + ", numberCode=" + numberCode + ", urlTitle=" + urlTitle
+				+ "]";
+	}
+	
 }

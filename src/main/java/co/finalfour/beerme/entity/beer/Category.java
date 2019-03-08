@@ -1,8 +1,16 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Category{
+	
+	@Column(name="objCategoryCreateDate")
    	private String createDate;
+   	@Column(name="objCategoryId", unique=true)
    	private Number id;
+   	@Column(name="objCategoryName")
    	private String name;
 
  	public String getCreateDate(){
@@ -23,4 +31,10 @@ public class Category{
 	public void setName(String name){
 		this.name = name;
 	}
+	
+	@Override
+	public String toString() {
+		return "Category [createDate=" + createDate + ", id=" + id + ", name=" + name + "]";
+	}
+	
 }

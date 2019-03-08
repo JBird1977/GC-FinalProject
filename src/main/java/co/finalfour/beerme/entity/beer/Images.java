@@ -1,8 +1,16 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Images{
+	
+	@Column(name="objImagesIcon")
    	private String icon;
+	@Column(name="objImagesLarge")
    	private String large;
+	@Column(name="objImagesMedium")
    	private String medium;
 
  	public String getIcon(){
@@ -23,4 +31,10 @@ public class Images{
 	public void setMedium(String medium){
 		this.medium = medium;
 	}
+	
+	@Override
+	public String toString() {
+		return "Images [icon=" + icon + ", large=" + large + ", medium=" + medium + "]";
+	}
+	
 }

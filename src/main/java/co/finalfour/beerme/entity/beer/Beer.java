@@ -2,28 +2,48 @@ package co.finalfour.beerme.entity.beer;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.Type;
+
+@Entity
 public class Beer{
 
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long beerId;
+	
    	private String abv;
+   	@Embedded @Type(type="Available")
    	private Available available;
    	private Number availableId;
    	private String createDate;
    	private String description;
 	private String foodPairings;
+	@Embedded @Type(type="Glass")
    	private Glass glass;
    	private Number glasswareId;
 	private String ibu;
+	@Column(unique=true)
    	private String id;
    	private String isOrganic;
    	private String name;
 	private Number originalGravity;
    	private String status;
    	private String statusDisplay;
+   	@Embedded @Type(type="Style")
    	private Style style;
    	private Number styleId;
 	private String type;
    	private String updateDate;
+   	@ElementCollection 
 	private List<Brewery> breweries;
+   	@Embedded @Type(type="Images")
 	private Images labels;
 
  	public List<Brewery> getBreweries() {

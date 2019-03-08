@@ -1,8 +1,16 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Available{
+	
+	@Column(name="objAvailableDescription")
    	private String description;
+   	@Column(name="objAvailableId", unique=true)
    	private String id;
+   	@Column(name="objAvailableName")
    	private String name;
 
  	public String getDescription(){
@@ -22,6 +30,11 @@ public class Available{
 	}
 	public void setName(String name){
 		this.name = name;
+	}
+	
+	@Override
+	public String toString() {
+		return "Available [description=" + description + ", id=" + id + ", name=" + name + "]";
 	}
 	
 }

@@ -1,26 +1,56 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+
+import org.hibernate.annotations.Type;
+
+@Embeddable
 public class Locations{
+	
+	@Embedded @Type(type="Country")
+	@Column(name="objLocationsCountry")
    	private Country country;
+	@Column(name="objLocationsCountryIsoCode")
    	private String countryIsoCode;
+	@Column(name="objLocationsCreateDate")
    	private String createDate;
+   	@Column(name="objLocationsId", unique=true)
    	private String id;
+   	@Column(name="objLocationsInPlanning")
    	private String inPlanning;
+   	@Column(name="objLocationsIsClosed")
    	private String isClosed;
+   	@Column(name="objLocationsIsPrimary")
    	private String isPrimary;
+   	@Column(name="objLocationsLatitude")
    	private Number latitude;
+   	@Column(name="objLocationsLocality")
    	private String locality;
+   	@Column(name="objLocationsLocationType")
    	private String locationType;
+   	@Column(name="objLocationsLocationTypeDisplay")
    	private String locationTypeDisplay;
+   	@Column(name="objLocationsLongitude")
    	private Number longitude;
+   	@Column(name="objLocationsName")
    	private String name;
+   	@Column(name="objLocationsOpenToPublic")
    	private String openToPublic;
+   	@Column(name="objLocationsPostalCode")
    	private String postalCode;
+   	@Column(name="objLocationsRegion")
    	private String region;
+   	@Column(name="objLocationsStatus")
    	private String status;
+   	@Column(name="objLocationsStatusDisplay")
    	private String statusDisplay;
+   	@Column(name="objLocationsUpdateDate")
    	private String updateDate;
+   	@Column(name="objLocationsWebsite")
    	private String website;
+   	@Column(name="objLocationsYearOpened")
    	private String yearOpened;
 
  	public Country getCountry(){
@@ -149,4 +179,16 @@ public class Locations{
 	public void setYearOpened(String yearOpened){
 		this.yearOpened = yearOpened;
 	}
+	
+	@Override
+	public String toString() {
+		return "Locations [country=" + country + ", countryIsoCode=" + countryIsoCode + ", createDate=" + createDate
+				+ ", id=" + id + ", inPlanning=" + inPlanning + ", isClosed=" + isClosed + ", isPrimary=" + isPrimary
+				+ ", latitude=" + latitude + ", locality=" + locality + ", locationType=" + locationType
+				+ ", locationTypeDisplay=" + locationTypeDisplay + ", longitude=" + longitude + ", name=" + name
+				+ ", openToPublic=" + openToPublic + ", postalCode=" + postalCode + ", region=" + region + ", status="
+				+ status + ", statusDisplay=" + statusDisplay + ", updateDate=" + updateDate + ", website=" + website
+				+ ", yearOpened=" + yearOpened + "]";
+	}
+	
 }

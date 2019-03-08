@@ -1,20 +1,44 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+
+import org.hibernate.annotations.Type;
+
+@Embeddable
 public class Style{
+	
+	@Column(name="objStyleAbvMax")
    	private String abvMax;
+	@Column(name="objStyleAbvMin")
    	private String abvMin;
+   	@Embedded @Type(type="Category")
+   	@Column(name="objStyleCategory")
    	private Category category;
+   	@Column(name="objStyleCategoryId")
    	private Number categoryId;
+   	@Column(name="objStyleCreateDate")
    	private String createDate;
+   	@Column(name="objStyleDescription")
    	private String description;
+   	@Column(name="objStyleFgMax")
    	private String fgMax;
+   	@Column(name="objStyleFgMin")
    	private String fgMin;
+   	@Column(name="objStyleIbuMax")
    	private String ibuMax;
+   	@Column(name="objStyleIbuMin")
    	private String ibuMin;
+   	@Column(name="objStyleId", unique=true)
    	private Number id;
+   	@Column(name="objStyleName")
    	private String name;
+   	@Column(name="objStyleOgMin")
    	private String ogMin;
+   	@Column(name="objStyleSrmMax")
    	private String srmMax;
+   	@Column(name="objStyleSrmMin")
    	private String srmMin;
 
  	public String getAbvMax(){
@@ -107,4 +131,13 @@ public class Style{
 	public void setSrmMin(String srmMin){
 		this.srmMin = srmMin;
 	}
+	
+	@Override
+	public String toString() {
+		return "Style [abvMax=" + abvMax + ", abvMin=" + abvMin + ", category=" + category + ", categoryId="
+				+ categoryId + ", createDate=" + createDate + ", description=" + description + ", fgMax=" + fgMax
+				+ ", fgMin=" + fgMin + ", ibuMax=" + ibuMax + ", ibuMin=" + ibuMin + ", id=" + id + ", name=" + name
+				+ ", ogMin=" + ogMin + ", srmMax=" + srmMax + ", srmMin=" + srmMin + "]";
+	}
+	
 }
