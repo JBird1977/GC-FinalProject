@@ -55,5 +55,24 @@ public class BeerApiService {
 		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);				
 		return response.getData();
 	}
+	//To search beers at a particular brewery.
+	public List<Brewery> findBeersByBreweries(String breweryId){
+											//Sample: http://api.brewerydb.com/v2/brewery/BznahA/beers?key=b2599794d8cfacff731e8ed3493f43bd
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/brewery/"+breweryId+"/beers"+key)
+				.toUriString();
+		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);
+		return response.getData();
+		
+	}
+	//To search beers by abv
+	public List<Beer> findBeersByAbv(String name, String styleId){
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/"+name+"/"+styleId+"/abv"+key)
+				.toUriString();
+		BeerResponse response = restTemplate.getForObject(url, BeerResponse.class );
+		return response.getData();
+	}
+	
+	//To sear beers by hops
+	//public List<Beer> findBeersBy
 	
 }
