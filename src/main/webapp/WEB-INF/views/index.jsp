@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +8,13 @@
 <title>Beer Me</title>
 </head>
 <body>
-<form method=>
+<form action = "/results" method=post>
 <p>
 Mood <select>
-<option value = " "></option>
-<option value ="Happy" >Happy</option>
-<option value ="Punchy">Punchy</option>
-<option value ="Notebook Sad" >Notebook Sad</option>
-<option value ="Pepe Le Pew Social">Pepe Le Pew Social</option>
+
+<c:forEach var="moods" items="${moods}">
+<option value ="${moods}" >"${moods}"</option>
+</c:forEach>
 </select>
 </p>
 <p>

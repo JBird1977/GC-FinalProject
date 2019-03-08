@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
+import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.entity.beer.BeerResponse;
 
 @Component

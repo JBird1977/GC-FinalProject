@@ -1,5 +1,6 @@
 package co.finalfour.beerme;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
+import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.service.BeerApiService;
 
 @Controller
@@ -31,21 +33,35 @@ public class BeerMeController
     	List<Beer> beers = beerApiService.findBeers();
     	mav.addObject("breweries", breweries);
     	mav.addObject("beers", beers);
+    	//mav.addObject();
         return mav;
     }
     
     @RequestMapping ("/")
     public ModelAndView index()
     {
-    	return new ModelAndView("index");
+    	return new ModelAndView("index", "moods", getMoods());
+    	
     }
     
     @PostMapping("/results")
     public ModelAndView results(@RequestParam(value="mood")String mood)
     {
     	ModelAndView mav = new ModelAndView("results");
-    	
+    	//mav.addObject(Mood.class, "moods");
     	return new ModelAndView("results");
     }
+    
+	
+	public List<String> getMoods()
+	{
+		List<String> moods = new ArrayList<>();
+		moods.add("Happy");
+		moods.add("Punchy");
+		moods.add("Notebook Sad");
+		moods.add("Pepe Le Pew Social");	
+		return moods;
+	}
+	
     
 }
