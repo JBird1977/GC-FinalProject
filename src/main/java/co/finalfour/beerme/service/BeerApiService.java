@@ -10,8 +10,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
+import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.entity.beer.BeerResponse;
+import co.finalfour.beerme.entity.beer.IngredientsResponse;
+
 
 @Component
 public class BeerApiService {
@@ -73,13 +76,15 @@ public class BeerApiService {
 		return response.getData();
 	}
 	
-	//To sear beers by hops
+	//To search ingredients.
 	//public List<Beer> findBeersBy
-	public List<Ingredients> findIngredientsByBeer(String name, String styleId){
-		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/"+name+"/"+styleId+"/abv"+key)
+	public List<Ingredient> findIngredientsByBeer(String id){
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/"+id+"/ingredients"+key)
 				.toUriString();
-		BeerResponse response = restTemplate.getForObject(url, BeerResponse.class );
+		IngredientsResponse response = restTemplate.getForObject(url, IngredientsResponse.class );
+		System.out.println("Response = "+response);
 		return response.getData();
+		
 	}
 	
 }

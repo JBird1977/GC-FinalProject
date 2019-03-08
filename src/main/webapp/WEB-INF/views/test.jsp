@@ -26,6 +26,16 @@
 	</ul>	
 	</c:forEach>
 	
+	<c:forEach var="ingredients" items="${ingredients }">
+	
+	<ul>
+	<li>Name: ${ingredients.name }</li>
+	<li>Category: ${ingredients.category }</li>
+	</ul>
+	
+	</c:forEach>
+	
+	
 </div>
 </body>
 </html>

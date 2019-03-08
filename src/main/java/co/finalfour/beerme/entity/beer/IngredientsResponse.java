@@ -2,7 +2,7 @@ package co.finalfour.beerme.entity.beer;
 
 import java.util.List;
 
-public class IngredientsList {
+public class IngredientsResponse {
 
 	private List<Ingredient> data;
 

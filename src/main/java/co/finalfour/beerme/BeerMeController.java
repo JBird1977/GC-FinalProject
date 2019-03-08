@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
+import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.service.BeerApiService;
 
@@ -27,12 +28,15 @@ public class BeerMeController
     
     @RequestMapping ("/test")
     public ModelAndView test()
+    
     {
     	ModelAndView mav = new ModelAndView("test");
     	List<Brewery> breweries = beerApiService.findBreweries();
     	List<Beer> beers = beerApiService.findBeers();
+    	List<Ingredient> ingredients = beerApiService.findIngredientsByBeer(beers.get(0).getId());
     	mav.addObject("breweries", breweries);
     	mav.addObject("beers", beers);
+    	mav.addObject("ingredients", ingredients);
     	//mav.addObject();
         return mav;
     }
