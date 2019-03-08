@@ -23,4 +23,5 @@ public class Available{
 	public void setName(String name){
 		this.name = name;
 	}
+	
 }

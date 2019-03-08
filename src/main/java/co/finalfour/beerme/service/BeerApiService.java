@@ -37,13 +37,22 @@ public class BeerApiService {
 	}
 	
 	public List<Brewery> findBreweriesByLocation(String postalCode, String locality, String region) {
-		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")		
-				.queryParam("postalCode", postalCode)
-				.queryParam("locality", locality)
-				.queryParam("region", region)
+		
+				String query = "";
+				if (postalCode != null) {
+					query = "postalCode";
+				} else if (locality != null) {
+					query = "locality";
+				} else if (region != null) {
+					query = "region";
+				} 
+				
+				String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")	
+				.queryParam(query, query)
 				.queryParam("key", key)
 				.toUriString();
-		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);		
+				
+		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);				
 		return response.getData();
 	}
 	
