@@ -1,30 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Beer Me</title>
 </head>
 <body>
-<div>
-	<ul>
-	<c:forEach var="brewery" items="${ breweries }">
-		<li>${ brewery.name }</li>
-	</c:forEach>
-	</ul>
-		
-	<c:forEach var="beer" items="${ beers }">
-	<ul>
-		<li>Name: ${ beer.name }</li>
-		<li>Type: ${ beer.type }</li>
-		<li>ABV: ${ beer.abv }</li>
-		<li>Glass: ${ beer.glass }</li>
-	</ul>	
-	</c:forEach>
-	
-</div>
+<form method=>
+<p>
+Mood <select>
+<option value = " "></option>
+<option value ="Happy" >Happy</option>
+<option value ="Punchy">Punchy</option>
+<option value ="Notebook Sad" >Notebook Sad</option>
+<option value ="Pepe Le Pew Social">Pepe Le Pew Social</option>
+</select>
+</p>
+<p>
+Location <input type="text" name="location"/>
+<button type ="submit" class="btn btn-link">Beer Me!</button>
+</p>
+</form>
 </body>
 </html>
