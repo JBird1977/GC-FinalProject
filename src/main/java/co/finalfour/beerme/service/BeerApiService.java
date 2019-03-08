@@ -75,5 +75,11 @@ public class BeerApiService {
 	
 	//To sear beers by hops
 	//public List<Beer> findBeersBy
+	public List<Ingredients> findIngredientsByBeer(String name, String styleId){
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/"+name+"/"+styleId+"/abv"+key)
+				.toUriString();
+		BeerResponse response = restTemplate.getForObject(url, BeerResponse.class );
+		return response.getData();
+	}
 	
 }
