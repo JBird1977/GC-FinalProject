@@ -22,6 +22,7 @@
 		<li>Type: ${ beer.type }</li>
 		<li>ABV: ${ beer.abv }</li>
 		<li>Glass: ${ beer.glass.name }</li>
+		<li>Style: ${ beer.style }</li>
 	</ul>	
 	</c:forEach>
 	
