@@ -33,7 +33,7 @@ public class BeerMeController
     	ModelAndView mav = new ModelAndView("test");
     	List<Brewery> breweries = beerApiService.findBreweries();
     	List<Beer> beers = beerApiService.findBeers();
-    	List<Ingredient> ingredients = beerApiService.findIngredientsByBeer(beers.get(0).getId());
+    	List<Ingredient> ingredients = beerApiService.findIngredientsByBeer("WHQisc");
     	mav.addObject("breweries", breweries);
     	mav.addObject("beers", beers);
     	mav.addObject("ingredients", ingredients);
