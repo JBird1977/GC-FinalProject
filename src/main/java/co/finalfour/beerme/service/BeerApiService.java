@@ -81,6 +81,7 @@ public class BeerApiService {
 	public List<Ingredient> findIngredientsByBeer(String id){
 		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/"+id+"/ingredients"+key)
 				.toUriString();
+		System.out.println("URL" + url);
 		IngredientsResponse response = restTemplate.getForObject(url, IngredientsResponse.class );
 		System.out.println("Response = "+response);
 		return response.getData();

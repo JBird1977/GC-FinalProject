@@ -37,7 +37,6 @@ public class BeerMeController
     	mav.addObject("breweries", breweries);
     	mav.addObject("beers", beers);
     	mav.addObject("ingredients", ingredients);
-    	//mav.addObject();
         return mav;
     }
     
