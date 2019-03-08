@@ -10,6 +10,15 @@
 </head>
 <body>
 <div>
+	<c:forEach var="ingredient" items="${ingredients }">
+	
+	<ul>
+	<li>Name: ${ingredient.name }</li>
+	<li>Category: ${ingredient.category }</li>
+	</ul>
+	
+	</c:forEach>
+	
 	<ul>
 	<c:forEach var="brewery" items="${ breweries }">
 		<li>${ brewery.name }</li>
@@ -26,15 +35,7 @@
 	</ul>	
 	</c:forEach>
 	
-	<c:forEach var="ingredients" items="${ingredients }">
-	
-	<ul>
-	<li>Name: ${ingredients.name }</li>
-	<li>Category: ${ingredients.category }</li>
-	</ul>
-	
-	</c:forEach>
-	
+
 	
 </div>
 </body>

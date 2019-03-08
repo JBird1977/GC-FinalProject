@@ -79,7 +79,7 @@ public class BeerApiService {
 	//To search ingredients.
 	//public List<Beer> findBeersBy
 	public List<Ingredient> findIngredientsByBeer(String id){
-		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/"+id+"/ingredients"+key)
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/"+id+"/ingredients/?key="+key)
 				.toUriString();
 		System.out.println("URL" + url);
 		IngredientsResponse response = restTemplate.getForObject(url, IngredientsResponse.class );
