@@ -10,6 +10,12 @@
 </head>
 <body>
 <p>Based on your mood and location: </p>
+    
+    <ul>
+     <c:forEach var="brewery" items="${ breweries }">
+        <li>${ brewery.name }</li>
+     </c:forEach>
+    </ul>
 
 </body>
 </html>

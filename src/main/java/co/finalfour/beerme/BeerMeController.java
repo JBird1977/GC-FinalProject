@@ -50,11 +50,13 @@ public class BeerMeController
     }
     
     @PostMapping("/results")
-    public ModelAndView results(@RequestParam(value="mood")String mood)
-    {
-    	ModelAndView mav = new ModelAndView("results");
-    	//mav.addObject(Mood.class, "moods");
-    	return new ModelAndView("results");
+    public ModelAndView results(@RequestParam(value="mood", required=false)String mood,
+                                @RequestParam(value="zip", required=false) String zip,
+                                @RequestParam(value="locality", required=false) String locality,
+                                @RequestParam(value="region", required=false) String region)
+    {    
+        List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
+    	return new ModelAndView("results", "brewery", breweries);
     }
 	
 	public List<String> getMoods()

@@ -55,13 +55,13 @@ public class BeerApiService {
 				String queryKey = "";
 				String queryValue = "";
 				
-				if (postalCode != null) {
+				if (postalCode != "") {
 					queryKey = "postalCode";
 					queryValue = postalCode;
-				} else if (locality != null) {
+				} else if (locality != "") {
 					queryKey = "locality";
 					queryValue = locality;
-				} else if (region != null) {
+				} else if (region != "") {
 					queryKey = "region";
 					queryValue = region;
 				} 
@@ -70,6 +70,8 @@ public class BeerApiService {
 				.queryParam(queryKey, queryValue)
 				.queryParam("key", key)
 				.toUriString();
+				
+				System.out.println(url);
 				
 		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);				
 		return response.getData();
