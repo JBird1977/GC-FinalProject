@@ -2,11 +2,16 @@ package co.finalfour.beerme.entity.beer;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Type;
 
 @Embeddable
 public class Available{
 	
-	@Column(name="objAvailableDescription")
+//	@Column(name="objAvailableDescription")
+//	@Type(type="text")
+	@Transient
    	private String description;
    	@Column(name="objAvailableId", unique=true)
    	private String id;

@@ -3,6 +3,7 @@ package co.finalfour.beerme.entity.beer;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -20,7 +21,9 @@ public class Style{
    	private Number categoryId;
    	@Column(name="objStyleCreateDate")
    	private String createDate;
-   	@Column(name="objStyleDescription")
+//   	@Column(name="objStyleDescription", columnDefinition="VARCHAR(MAX)")
+//   	@Type(type="text")
+   	@Transient
    	private String description;
    	@Column(name="objStyleFgMax")
    	private String fgMax;

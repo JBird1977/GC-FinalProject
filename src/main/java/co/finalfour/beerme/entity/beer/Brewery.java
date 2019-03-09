@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -19,6 +20,8 @@ public class Brewery{
 	private Long breweryId;
 	
    	private String createDate;
+//   	@Column @Type(type="text")
+   	@Transient
    	private String description;
    	private String established;
    	@Column(unique=true)

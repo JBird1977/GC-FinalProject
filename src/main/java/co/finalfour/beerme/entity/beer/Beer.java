@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -23,6 +24,8 @@ public class Beer{
    	private Available available;
    	private Number availableId;
    	private String createDate;
+//   	@Column @Type(type="text")
+   	@Transient
    	private String description;
 	private String foodPairings;
 	@Embedded @Type(type="Glass")
@@ -45,137 +48,284 @@ public class Beer{
 	private List<Brewery> breweries;
    	@Embedded @Type(type="Images")
 	private Images labels;
+   	
+   	private Integer rating;
 
- 	public List<Brewery> getBreweries() {
+	public Long getBeerId() {
+		return beerId;
+	}
+
+
+
+	public void setBeerId(Long beerId) {
+		this.beerId = beerId;
+	}
+
+
+
+	public String getAbv() {
+		return abv;
+	}
+
+
+
+	public void setAbv(String abv) {
+		this.abv = abv;
+	}
+
+
+
+	public Available getAvailable() {
+		return available;
+	}
+
+
+
+	public void setAvailable(Available available) {
+		this.available = available;
+	}
+
+
+
+	public Number getAvailableId() {
+		return availableId;
+	}
+
+
+
+	public void setAvailableId(Number availableId) {
+		this.availableId = availableId;
+	}
+
+
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+	public String getFoodPairings() {
+		return foodPairings;
+	}
+
+
+
+	public void setFoodPairings(String foodPairings) {
+		this.foodPairings = foodPairings;
+	}
+
+
+
+	public Glass getGlass() {
+		return glass;
+	}
+
+
+
+	public void setGlass(Glass glass) {
+		this.glass = glass;
+	}
+
+
+
+	public Number getGlasswareId() {
+		return glasswareId;
+	}
+
+
+
+	public void setGlasswareId(Number glasswareId) {
+		this.glasswareId = glasswareId;
+	}
+
+
+
+	public String getIbu() {
+		return ibu;
+	}
+
+
+
+	public void setIbu(String ibu) {
+		this.ibu = ibu;
+	}
+
+
+
+	public String getId() {
+		return id;
+	}
+
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+
+
+	public String getIsOrganic() {
+		return isOrganic;
+	}
+
+
+
+	public void setIsOrganic(String isOrganic) {
+		this.isOrganic = isOrganic;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public Number getOriginalGravity() {
+		return originalGravity;
+	}
+
+
+
+	public void setOriginalGravity(Number originalGravity) {
+		this.originalGravity = originalGravity;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	public String getStatusDisplay() {
+		return statusDisplay;
+	}
+
+
+
+	public void setStatusDisplay(String statusDisplay) {
+		this.statusDisplay = statusDisplay;
+	}
+
+
+
+	public Style getStyle() {
+		return style;
+	}
+
+
+
+	public void setStyle(Style style) {
+		this.style = style;
+	}
+
+
+
+	public Number getStyleId() {
+		return styleId;
+	}
+
+
+
+	public void setStyleId(Number styleId) {
+		this.styleId = styleId;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
+
+
+	public List<Brewery> getBreweries() {
 		return breweries;
 	}
+
+
 
 	public void setBreweries(List<Brewery> breweries) {
 		this.breweries = breweries;
 	}
 
-	public String getAbv(){
-		return this.abv;
-	}
-	public void setAbv(String abv){
-		this.abv = abv;
-	}
- 	public Available getAvailable(){
-		return this.available;
-	}
-	public void setAvailable(Available available){
-		this.available = available;
-	}
- 	public Number getAvailableId(){
-		return this.availableId;
-	}
-	public void setAvailableId(Number availableId){
-		this.availableId = availableId;
-	}
- 	public String getCreateDate(){
-		return this.createDate;
-	}
-	public void setCreateDate(String createDate){
-		this.createDate = createDate;
-	}
- 	public String getDescription(){
-		return this.description;
-	}
-	public void setDescription(String description){
-		this.description = description;
-	}
-	public String getFoodPairings() {
-		return this.foodPairings;
-	}
-	public void setFoodPairings(String foodPairings) {
-		this.foodPairings = foodPairings;
-	}
- 	public Glass getGlass(){
-		return this.glass;
-	}
-	public void setGlass(Glass glass){
-		this.glass = glass;
-	}
- 	public Number getGlasswareId(){
-		return this.glasswareId;
-	}
-	public void setGlasswareId(Number glasswareId){
-		this.glasswareId = glasswareId;
-	}
-	public String getIbu() {
-		return this.ibu;
-	}
-	public void setIbu(String ibu) {
-		this.ibu = ibu;
-	}
- 	public String getId(){
-		return this.id;
-	}
-	public void setId(String id){
-		this.id = id;
-	}
- 	public String getIsOrganic(){
-		return this.isOrganic;
-	}
-	public void setIsOrganic(String isOrganic){
-		this.isOrganic = isOrganic;
-	}
- 	public String getName(){
-		return this.name;
-	}
-	public void setName(String name){
-		this.name = name;
-	}
-	public Number getOriginalGravity() {
-		return this.originalGravity;
-	}
-	public void setOriginalGravity(Number originalGravity) {
-		this.originalGravity = originalGravity;
-	}
- 	public String getStatus(){
-		return this.status;
-	}
-	public void setStatus(String status){
-		this.status = status;
-	}
- 	public String getStatusDisplay(){
-		return this.statusDisplay;
-	}
-	public void setStatusDisplay(String statusDisplay){
-		this.statusDisplay = statusDisplay;
-	}
- 	public Style getStyle(){
-		return this.style;
-	}
-	public void setStyle(Style style){
-		this.style = style;
-	}
- 	public Number getStyleId(){
-		return this.styleId;
-	}
-	public void setStyleId(Number styleId){
-		this.styleId = styleId;
-	}
-	public String getType() {
-		return this.type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
- 	public String getUpdateDate(){
-		return this.updateDate;
-	}
-	public void setUpdateDate(String updateDate){
-		this.updateDate = updateDate;
-	}
+
 
 	public Images getLabels() {
 		return labels;
 	}
 
-	public void setLabels(Images images) {
-		this.labels = images;
+
+
+	public void setLabels(Images labels) {
+		this.labels = labels;
 	}
+
+
+
+	public Integer getRating() {
+		return rating;
+	}
+
+
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
+
 
 	@Override
 	public String toString() {

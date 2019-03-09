@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,7 +56,6 @@ public class BeerMeController
     	//mav.addObject(Mood.class, "moods");
     	return new ModelAndView("results");
     }
-    
 	
 	public List<String> getMoods()
 	{
@@ -66,5 +67,37 @@ public class BeerMeController
 		return moods;
 	}
 	
+    @RequestMapping("/favorites")
+	public ModelAndView viewFavorites() {	
+		List<Beer> favorites = beerMeDao.findAllBeers();
+		System.out.println("favorites length = " + favorites.size());////////////testing
+		return new ModelAndView("favorites", "favorites", favorites);	
+    }
+    
+	@RequestMapping("/beer/{id}/add")
+	public ModelAndView addFavorite(@PathVariable("id") String id) {	
+		Beer beer = new Beer();
+		beer = beerApiService.findBeerById(id);
+		if (beerMeDao.beerContains(beer)) {
+			beerMeDao.createBeer(beer);
+		}	
+		return new ModelAndView("redirect:/favorites");
+	}
+	
+	@RequestMapping("/beer/{id}/{rating}/ratingUpdate")
+	public ModelAndView updateFavoriteRating(@PathVariable("id") Long beerId,
+			@PathVariable("rating") Integer rating) {
+		Beer beer = new Beer();
+		beer = beerMeDao.findBeerById(beerId);//
+		beer.setRating(rating);
+		beerMeDao.updateBeer(beer);
+		return new ModelAndView("redirect:/favorites");
+	}
+    
+	@RequestMapping("/beer/{id}/delete")
+	public ModelAndView deleteFavorite(@PathVariable("id") Long beerId) {
+		beerMeDao.deleteBeer(beerId);
+		return new ModelAndView("redirect:/favorites");
+	}
     
 }

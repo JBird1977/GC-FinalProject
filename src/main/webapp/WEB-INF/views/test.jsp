@@ -32,6 +32,7 @@
 		<li>ABV: ${ beer.abv }</li>
 		<li>Glass: ${ beer.glass.name }</li>
 		<li>Style: ${ beer.style }</li>
+		<li><a href="/beer/${ beer.id }/add">favorite</a></li>
 	</ul>	
 	</c:forEach>
 	
