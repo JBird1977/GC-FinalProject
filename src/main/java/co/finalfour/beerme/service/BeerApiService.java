@@ -42,17 +42,22 @@ public class BeerApiService {
 	
 	public List<Brewery> findBreweriesByLocation(String postalCode, String locality, String region) {
 		
-				String query = "";
+				String queryKey = "";
+				String queryValue = "";
+				
 				if (postalCode != null) {
-					query = "postalCode";
+					queryKey = "postalCode";
+					queryValue = postalCode;
 				} else if (locality != null) {
-					query = "locality";
+					queryKey = "locality";
+					queryValue = locality;
 				} else if (region != null) {
-					query = "region";
+					queryKey = "region";
+					queryValue = region;
 				} 
 				
 				String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")	
-				.queryParam(query, query)
+				.queryParam(queryKey, queryValue)
 				.queryParam("key", key)
 				.toUriString();
 				
