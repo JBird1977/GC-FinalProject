@@ -80,7 +80,7 @@ public class BeerMeController
 	public ModelAndView addFavorite(@PathVariable("id") String id) {	
 		Beer beer = new Beer();
 		beer = beerApiService.findBeerById(id);
-		if (beerMeDao.beerContains(beer)) {
+		if (!beerMeDao.beerContains(beer)) {
 			beerMeDao.createBeer(beer);
 		}	
 		return new ModelAndView("redirect:/favorites");
