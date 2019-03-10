@@ -9,5 +9,15 @@
 </head>
 <body>
 <p>This is the details page! :) </p>
+
+<h5>${name }</h5>
+    <ul>
+     <c:forEach var="beers" items="${ beers }">
+        <li>${ beers.name }</li>
+        
+     </c:forEach>
+    </ul>
+
+
 </body>
 </html>

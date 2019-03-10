@@ -13,7 +13,7 @@
     
     <ul>
      <c:forEach var="brewery" items="${ brewery }">
-        <li>${ brewery.name }</li>
+        <li><a href="/details/${brewery.name }">${ brewery.name }</a></li>
      </c:forEach>
     </ul>
 

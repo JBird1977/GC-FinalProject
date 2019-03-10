@@ -68,5 +68,17 @@ public class BeerMeController
 		moods.add("Pepe Le Pew Social");	
 		return moods;
 	}
+	
+	@RequestMapping("/details/{name}")
+	public ModelAndView details(@PathVariable("name") String name) {
+		ModelAndView mav = new ModelAndView("details");
+		List<Beer> beers = beerApiService.findBeers();
+		List<Brewery> breweries = beerApiService.findBreweries();
+		mav.addObject("beers", beers);
+		mav.addObject("breweries",breweries);
+		return mav;
+		
+	}
+	
     
 }
