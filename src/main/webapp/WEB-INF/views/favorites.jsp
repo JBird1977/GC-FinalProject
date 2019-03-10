@@ -37,6 +37,12 @@
 				<a href="/beer/${ beer.beerId }/delete">delete</a>
 			</li>
 			<li>Name: ${ beer.name }</li>
+			<dl>
+				<dt>Ingredients</dt>
+				<c:forEach var="ingredient" items="${ beer.ingredients }">
+					<dd>${ ingredient }</dd>
+				</c:forEach>
+			</dl>
 		</ul>
 	</c:forEach>
 	<div>Return <a href="/">home</a>.</div>
@@ -45,22 +51,34 @@
 <div>
 	<c:forEach var="brewery" items="${ breweries }">
 		<ul>
-			<li>Rating: 
-				<c:choose>
-					<c:when test="${ not empty brewery.rating }">
-						${ brewery.rating } <a href="/brewery/${ brewery.breweryId }/0/ratingUpdate">edit</a>
-					</c:when>
-					<c:otherwise>
-						<a href="/brewery/${ brewery.breweryId }/1/ratingUpdate"> 1 </a>
-						<a href="/brewery/${ brewery.breweryId }/2/ratingUpdate"> 2 </a>
-						<a href="/brewery/${ brewery.breweryId }/3/ratingUpdate"> 3 </a>
-						<a href="/brewery/${ brewery.breweryId }/4/ratingUpdate"> 4 </a>
-						<a href="/brewery/${ brewery.breweryId }/5/ratingUpdate"> 5 </a>
-					</c:otherwise>
-				</c:choose>
-				<a href="/brewery/${ brewery.breweryId }/delete">delete</a>
-			</li>
-			<li>Name: ${ brewery.name }</li>
+			<li>
+				<dl><dt>${ brewery.name }</dt>
+					<dt>
+						Rating <a href="/brewery/${ brewery.breweryId }/delete">delete</a> 
+						<c:choose>
+							<c:when test="${ not empty brewery.rating }">
+								<a href="/brewery/${ brewery.breweryId }/0/ratingUpdate">edit</a>
+								</dt>
+								<dd>
+								${ brewery.rating } 
+							</c:when>
+							<c:otherwise>
+								</dt>
+								<dd>
+								<a href="/brewery/${ brewery.breweryId }/1/ratingUpdate"> 1 </a>
+								<a href="/brewery/${ brewery.breweryId }/2/ratingUpdate"> 2 </a>
+								<a href="/brewery/${ brewery.breweryId }/3/ratingUpdate"> 3 </a>
+								<a href="/brewery/${ brewery.breweryId }/4/ratingUpdate"> 4 </a>
+								<a href="/brewery/${ brewery.breweryId }/5/ratingUpdate"> 5 </a>
+							</c:otherwise>
+						</c:choose>
+					</dd>
+					<dt>Location</dt>
+					<c:forEach var="location" items="${ brewery.locations }">
+						<dd>${ location }</dd>
+					</c:forEach>
+				</dl>	
+			</li>		
 		</ul>
 	</c:forEach>
 	<div>Return <a href="/">home</a>.</div>

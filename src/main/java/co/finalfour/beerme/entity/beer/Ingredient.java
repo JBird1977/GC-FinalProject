@@ -1,6 +1,10 @@
 package co.finalfour.beerme.entity.beer;
 
+import javax.persistence.Embeddable;
 
+//import javax.persistence.ManyToOne;
+
+@Embeddable
 public class Ingredient {
 
 	private Long id;
@@ -8,6 +12,9 @@ public class Ingredient {
 	private String category;
 	private String categoryDisplay;
 	private String createDate;
+	
+//	@ManyToOne
+//	private Beer beer;
 	
 	public Long getId() {
 		return id;

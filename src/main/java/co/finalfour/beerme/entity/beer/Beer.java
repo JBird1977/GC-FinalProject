@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
@@ -53,6 +56,12 @@ public class Beer {
     @ManyToMany(mappedBy="beers",
         	cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Brewery> breweries = new ArrayList<>();
+    
+//    @OneToMany(mappedBy="beer",
+//    		cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinColumn(name="beer_id")
+    @ElementCollection
+    private List<Ingredient> ingredients = new ArrayList<>();
    	
 	public Long getBeerId() {
 		return beerId;
@@ -236,6 +245,14 @@ public class Beer {
 
 	public void setRating(Integer rating) {
 		this.rating = rating;
+	}
+
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	@Override

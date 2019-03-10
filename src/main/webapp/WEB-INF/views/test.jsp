@@ -25,6 +25,9 @@
 	</c:forEach>
 	</ul>
 		
+	<ul>
+	<li>Ingredient Beer <a href="/beer/WHQisc/add">Dragon's Milk</a></li>
+	</ul>
 	<c:forEach var="beer" items="${ beers }">
 	<ul>
 		<li>Name: ${ beer.name }</li>

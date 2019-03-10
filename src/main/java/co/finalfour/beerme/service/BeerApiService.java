@@ -15,6 +15,8 @@ import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.entity.beer.BeerResponse;
 import co.finalfour.beerme.entity.beer.BeerSingleResponse;
 import co.finalfour.beerme.entity.beer.IngredientsResponse;
+import co.finalfour.beerme.entity.beer.Location;
+import co.finalfour.beerme.entity.beer.LocationsResponse;
 import co.finalfour.beerme.model.Mood;
 
 
@@ -112,7 +114,14 @@ public class BeerApiService {
 		IngredientsResponse response = restTemplate.getForObject(url, IngredientsResponse.class );
 		System.out.println("Response = "+response);
 		return response.getData();
-		
+	}
+	
+	public List<Location> findLocationsByBreweryId(String id){
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/brewery/" + id + "/locations/")
+				.queryParam("key", key)
+				.toUriString();
+		LocationsResponse response = restTemplate.getForObject(url, LocationsResponse.class);		
+		return response.getData();	
 	}
 	
 }

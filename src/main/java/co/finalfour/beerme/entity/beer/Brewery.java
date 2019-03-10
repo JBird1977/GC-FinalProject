@@ -34,7 +34,7 @@ public class Brewery{
    	private Images images;
    	private String isOrganic;
    	@ElementCollection 
-   	private List<Locations> locations;
+   	private List<Location> locations;
    	private String name;
    	private String status;
    	private String statusDisplay;
@@ -109,11 +109,11 @@ public class Brewery{
 		this.isOrganic = isOrganic;
 	}
  	
- 	public List<Locations> getLocations(){
+ 	public List<Location> getLocations(){
 		return this.locations;
 	}
 	
- 	public void setLocations(List<Locations> locations){
+ 	public void setLocations(List<Location> locations){
 		this.locations = locations;
 	}
  	

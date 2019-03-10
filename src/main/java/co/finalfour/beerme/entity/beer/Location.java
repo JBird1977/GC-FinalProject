@@ -7,7 +7,7 @@ import javax.persistence.Embedded;
 import org.hibernate.annotations.Type;
 
 @Embeddable
-public class Locations{
+public class Location{
 	
 	@Embedded @Type(type="Country")
 	@Column(name="objLocationsCountry")

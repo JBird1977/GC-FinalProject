@@ -52,6 +52,7 @@ public class FavoritesController {
 			Beer beer = new Beer();
 			beer = beerApiService.findBeerById(id);
 			if (!beerMeDao.beerHas(id)) {
+				beer.setIngredients(beerApiService.findIngredientsByBeer(id));
 				beerMeDao.createBeer(beer);
 			} else {
 				action = "already added";
@@ -61,6 +62,7 @@ public class FavoritesController {
 			Brewery brewery = new Brewery();
 			brewery = beerApiService.findBreweryById(id);
 			if (!beerMeDao.breweryHas(id)) {
+				brewery.setLocations(beerApiService.findLocationsByBreweryId(id));
 				beerMeDao.createBrewery(brewery);
 			} else {
 				action = "already added";
