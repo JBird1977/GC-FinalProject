@@ -9,7 +9,17 @@
 </head>
 <body>
 <div>
-	<c:forEach var="beer" items="${ favorites }">
+	<c:choose>
+		<c:when test="${ not empty action }">
+			${ beer.name }${ brewery.name } ${ action }
+		</c:when>
+		<c:otherwise>
+			Places to be & Beers to drink...
+		</c:otherwise>
+	</c:choose>
+</div>
+<div>
+	<c:forEach var="beer" items="${ beers }">
 		<ul>
 			<li>Rating: 
 				<c:choose>
@@ -27,6 +37,30 @@
 				<a href="/beer/${ beer.beerId }/delete">delete</a>
 			</li>
 			<li>Name: ${ beer.name }</li>
+		</ul>
+	</c:forEach>
+	<div>Return <a href="/">home</a>.</div>
+	<div>Return to <a href="/test">test</a>.</div>
+</div>
+<div>
+	<c:forEach var="brewery" items="${ breweries }">
+		<ul>
+			<li>Rating: 
+				<c:choose>
+					<c:when test="${ not empty brewery.rating }">
+						${ brewery.rating }
+					</c:when>
+					<c:otherwise>
+						<a href="/brewery/${ brewery.breweryId }/1/ratingUpdate"> 1 </a>
+						<a href="/brewery/${ brewery.breweryId }/2/ratingUpdate"> 2 </a>
+						<a href="/brewery/${ brewery.breweryId }/3/ratingUpdate"> 3 </a>
+						<a href="/brewery/${ brewery.breweryId }/4/ratingUpdate"> 4 </a>
+						<a href="/brewery/${ brewery.breweryId }/5/ratingUpdate"> 5 </a>
+					</c:otherwise>
+				</c:choose>
+				<a href="/brewery/${ brewery.breweryId }/delete">delete</a>
+			</li>
+			<li>Name: ${ brewery.name }</li>
 		</ul>
 	</c:forEach>
 	<div>Return <a href="/">home</a>.</div>

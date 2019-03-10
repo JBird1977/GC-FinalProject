@@ -70,7 +70,7 @@ public class BeerMeDao
 		em.flush();
 	}
 
-	public boolean BreweryContains(Brewery brewery) {
+	public boolean breweryContains(Brewery brewery) {
 		return em.contains(brewery);
 	}
 	///////////////////////////////// BEER //////////////////////////////////////////////

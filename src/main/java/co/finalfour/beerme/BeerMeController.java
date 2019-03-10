@@ -71,16 +71,20 @@ public class BeerMeController
 	
     @RequestMapping("/favorites")
 	public ModelAndView viewFavorites() {
-		List<Beer> favorites = beerMeDao.findAllBeers();
-		if (favorites.isEmpty()) {
+		List<Beer> beers = beerMeDao.findAllBeers();
+		List<Brewery> breweries = beerMeDao.findAllBreweries();
+		if (beers.isEmpty() && breweries.isEmpty()) {
 			return new ModelAndView("empty");
 		} else {
-			return new ModelAndView("favorites", "favorites", favorites);	
+			ModelAndView mav = new ModelAndView("favorites");
+			mav.addObject("beers", beers);
+			mav.addObject("breweries", breweries);
+			return mav;
 		}
     }
     
 	@RequestMapping("/beer/{id}/add")
-	public ModelAndView addFavorite(@PathVariable("id") String objectBeerId) {	
+	public ModelAndView addFavoriteBeer(@PathVariable("id") String objectBeerId) {	
 		Beer beer = new Beer();
 		beer = beerApiService.findBeerById(objectBeerId);
 		if (!beerMeDao.beerContains(beer)) {
@@ -90,7 +94,7 @@ public class BeerMeController
 	}
 	
 	@RequestMapping("/beer/{id}/{rating}/ratingUpdate")
-	public ModelAndView updateFavoriteRating(@PathVariable("id") Long beerId,
+	public ModelAndView updateFavoriteBeerRating(@PathVariable("id") Long beerId,
 			@PathVariable("rating") Integer rating) {
 		Beer beer = new Beer();
 		beer = beerMeDao.findBeerById(beerId);
@@ -100,9 +104,48 @@ public class BeerMeController
 	}
     
 	@RequestMapping("/beer/{id}/delete")
-	public ModelAndView deleteFavorite(@PathVariable("id") Long beerId) {
+	public ModelAndView deleteFavoriteBeer(@PathVariable("id") Long beerId) {
+		Beer beer = new Beer();
+		beer = beerMeDao.findBeerById(beerId);
 		beerMeDao.deleteBeer(beerId);
+		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		mav.addObject("beer", beer.getName());
+		mav.addObject("action", "deleted");
+		return mav;
+	}
+	
+	@RequestMapping("/brewery/{id}/add")
+	public ModelAndView addFavoriteBrewery(@PathVariable("id") String objectBreweryId) {	
+		Brewery brewery = new Brewery();
+		brewery = beerApiService.findBreweryById(objectBreweryId);
+		if (!beerMeDao.breweryContains(brewery)) {
+			beerMeDao.createBrewery(brewery);
+		}
+		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		mav.addObject("brewery", brewery);
+		mav.addObject("action", "added");
+		return mav;
+	}
+	
+	@RequestMapping("/brewery/{id}/{rating}/ratingUpdate")
+	public ModelAndView updateFavoriteBreweryRating(@PathVariable("id") Long breweryId,
+			@PathVariable("rating") Integer rating) {
+		Brewery brewery = new Brewery();
+		brewery = beerMeDao.findBreweryById(breweryId);
+		brewery.setRating(rating);
+		beerMeDao.updateBrewery(brewery);
 		return new ModelAndView("redirect:/favorites");
+	}
+    
+	@RequestMapping("/brewery/{id}/delete")
+	public ModelAndView deleteFavoriteBrewery(@PathVariable("id") Long breweryId) {
+		Brewery brewery = new Brewery();
+		brewery = beerMeDao.findBreweryById(breweryId);
+		beerMeDao.deleteBrewery(breweryId);
+		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		mav.addObject("brewery", brewery.getName());
+		mav.addObject("action", "deleted");
+		return mav;
 	}
     
 }

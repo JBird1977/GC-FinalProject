@@ -41,6 +41,8 @@ public class Brewery{
    	private String updateDate;
    	private String website;
    	
+   	private Integer rating;
+   	
     @ManyToMany(cascade =
         {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "beer_brewery",
@@ -171,6 +173,14 @@ public class Brewery{
 		this.beers = beers;
 	}
 	
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
 		return "Brewery [createDate=" + createDate + ", description=" + description + ", established=" + established

@@ -10,6 +10,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
+import co.finalfour.beerme.entity.beer.BrewerySingleResponse;
 import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.entity.beer.BeerResponse;
@@ -31,6 +32,15 @@ public class BeerApiService {
 				.toUriString();
 		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);		
 		return response.getData();
+	}
+	
+	public Brewery findBreweryById(String id) {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/brewery/" + id + "/")
+				.queryParam("key", key)
+				.toUriString();
+		System.out.println("BREWERY URL = " + url);
+		BrewerySingleResponse response = restTemplate.getForObject(url, BrewerySingleResponse.class);		
+		return response.getData();		
 	}
 	
 	public List<Beer> findBeers() {

@@ -21,7 +21,7 @@
 	
 	<ul>
 	<c:forEach var="brewery" items="${ breweries }">
-		<li>${ brewery.name }</li>
+		<li>${ brewery.name } <a href="/brewery/${ brewery.id }/add">favorite</a></li>
 	</c:forEach>
 	</ul>
 		
