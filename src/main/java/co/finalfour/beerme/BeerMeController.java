@@ -70,7 +70,8 @@ public class BeerMeController
 	}
 	
     @RequestMapping("/favorites")
-	public ModelAndView viewFavorites() {
+	public ModelAndView viewFavorites(@ModelAttribute("action") String action,
+			@ModelAttribute("name") String name) {
 		List<Beer> beers = beerMeDao.findAllBeers();
 		List<Brewery> breweries = beerMeDao.findAllBreweries();
 		if (beers.isEmpty() && breweries.isEmpty()) {
@@ -79,6 +80,8 @@ public class BeerMeController
 			ModelAndView mav = new ModelAndView("favorites");
 			mav.addObject("beers", beers);
 			mav.addObject("breweries", breweries);
+			mav.addObject("action", action);
+			mav.addObject("name", name);
 			return mav;
 		}
     }
@@ -90,7 +93,12 @@ public class BeerMeController
 		if (!beerMeDao.beerContains(beer)) {
 			beerMeDao.createBeer(beer);
 		}
-		return new ModelAndView("redirect:/favorites", "beer", beer);
+		String action = "added";
+		String name = beer.getName();
+		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		mav.addObject("name", name);
+		mav.addObject("action", action);
+		return mav;
 	}
 	
 	@RequestMapping("/beer/{id}/{rating}/ratingUpdate")
@@ -108,22 +116,26 @@ public class BeerMeController
 		Beer beer = new Beer();
 		beer = beerMeDao.findBeerById(beerId);
 		beerMeDao.deleteBeer(beerId);
+		String action = "deleted";
+		String name = beer.getName();
 		ModelAndView mav = new ModelAndView("redirect:/favorites");
-		mav.addObject("beer", beer.getName());
-		mav.addObject("action", "deleted");
+		mav.addObject("name", name);
+		mav.addObject("action", action);
 		return mav;
 	}
 	
 	@RequestMapping("/brewery/{id}/add")
-	public ModelAndView addFavoriteBrewery(@PathVariable("id") String objectBreweryId) {	
+	public ModelAndView addFavoriteBrewery(@PathVariable("id") String objectBreweryId) {
 		Brewery brewery = new Brewery();
 		brewery = beerApiService.findBreweryById(objectBreweryId);
 		if (!beerMeDao.breweryContains(brewery)) {
 			beerMeDao.createBrewery(brewery);
 		}
+		String action = "added";
+		String name = brewery.getName();
 		ModelAndView mav = new ModelAndView("redirect:/favorites");
-		mav.addObject("brewery", brewery);
-		mav.addObject("action", "added");
+		mav.addObject("name", name);
+		mav.addObject("action", action);
 		return mav;
 	}
 	
@@ -142,9 +154,11 @@ public class BeerMeController
 		Brewery brewery = new Brewery();
 		brewery = beerMeDao.findBreweryById(breweryId);
 		beerMeDao.deleteBrewery(breweryId);
+		String action = "deleted";
+		String name = brewery.getName();
 		ModelAndView mav = new ModelAndView("redirect:/favorites");
-		mav.addObject("brewery", brewery.getName());
-		mav.addObject("action", "deleted");
+		mav.addObject("name", name);
+		mav.addObject("action", action);
 		return mav;
 	}
     

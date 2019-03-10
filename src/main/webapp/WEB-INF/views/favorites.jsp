@@ -11,7 +11,7 @@
 <div>
 	<c:choose>
 		<c:when test="${ not empty action }">
-			${ beer.name }${ brewery.name } ${ action }
+			${ name } ${ action }
 		</c:when>
 		<c:otherwise>
 			Places to be & Beers to drink...
