@@ -73,73 +73,56 @@ public class FavoritesController {
 		return mav;
 	}
 	
-	@RequestMapping("/beer/{id}/{rating}/ratingUpdate")
-	public ModelAndView updateFavoriteBeerRating(@PathVariable("id") Long beerId,
-			@PathVariable("rating") Integer rating) {
-		Beer beer = new Beer();
-		beer = beerMeDao.findBeerById(beerId);
-		if (rating == 0) {
-			beer.setRating(null);
-		} else {
-			beer.setRating(rating);
-		}
-		beerMeDao.updateBeer(beer);
-		return new ModelAndView("redirect:/favorites");
-	}
-    
-	@RequestMapping("/beer/{id}/delete")
-	public ModelAndView deleteFavoriteBeer(@PathVariable("id") Long beerId) {
-		Beer beer = new Beer();
-		beer = beerMeDao.findBeerById(beerId);
-		beerMeDao.deleteBeer(beerId);
-		String action = "deleted";
-		String name = beer.getName();
+	@RequestMapping("/{fave}/{id}/delete")
+	public ModelAndView deleteFavoriteBeer(@PathVariable("id") Long id,
+			@PathVariable("fave") String fave) {
+		
 		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		String action = "deleted";
+		String name = "";
+		
+		if (fave.equalsIgnoreCase("beer")) {
+			Beer beer = new Beer();
+			beer = beerMeDao.findBeerById(id);
+			beerMeDao.deleteBeer(id);
+			name = beer.getName();
+		} else if (fave.equalsIgnoreCase("brewery")) {
+			Brewery brewery = new Brewery();
+			brewery = beerMeDao.findBreweryById(id);
+			beerMeDao.deleteBrewery(id);
+			name = brewery.getName();
+		}
+
 		mav.addObject("name", name);
 		mav.addObject("action", action);
 		return mav;
 	}
 	
-//	@RequestMapping("/brewery/{id}/add")
-//	public ModelAndView addFavoriteBrewery(@PathVariable("id") String objectBreweryId) {
-//		Brewery brewery = new Brewery();
-//		brewery = beerApiService.findBreweryById(objectBreweryId);
-//		if (!beerMeDao.breweryContains(brewery)) {
-//			beerMeDao.createBrewery(brewery);
-//		}
-//		String action = "added";
-//		String name = brewery.getName();
-//		ModelAndView mav = new ModelAndView("redirect:/favorites");
-//		mav.addObject("name", name);
-//		mav.addObject("action", action);
-//		return mav;
-//	}
-	
-	@RequestMapping("/brewery/{id}/{rating}/ratingUpdate")
-	public ModelAndView updateFavoriteBreweryRating(@PathVariable("id") Long breweryId,
-			@PathVariable("rating") Integer rating) {
-		Brewery brewery = new Brewery();
-		brewery = beerMeDao.findBreweryById(breweryId);
-		if (rating == 0) {
-			brewery.setRating(null);
-		} else {
-			brewery.setRating(rating);
+	@RequestMapping("/{fave}/{id}/{rating}/ratingUpdate")
+	public ModelAndView updateFavoriteBeerRating(@PathVariable("id") Long id,
+			@PathVariable("rating") Integer rating,
+			@PathVariable("fave") String fave) {
+		
+		if (fave.equalsIgnoreCase("beer")) {
+			Beer beer = new Beer();
+			beer = beerMeDao.findBeerById(id);
+			if (rating == 0) {
+				beer.setRating(null);
+			} else {
+				beer.setRating(rating);
+			}
+			beerMeDao.updateBeer(beer);
+		} else if (fave.equalsIgnoreCase("brewery")) {
+			Brewery brewery = new Brewery();
+			brewery = beerMeDao.findBreweryById(id);
+			if (rating == 0) {
+				brewery.setRating(null);
+			} else {
+				brewery.setRating(rating);
+			}
+			beerMeDao.updateBrewery(brewery);
 		}
-		beerMeDao.updateBrewery(brewery);
 		return new ModelAndView("redirect:/favorites");
-	}
-    
-	@RequestMapping("/brewery/{id}/delete")
-	public ModelAndView deleteFavoriteBrewery(@PathVariable("id") Long breweryId) {
-		Brewery brewery = new Brewery();
-		brewery = beerMeDao.findBreweryById(breweryId);
-		beerMeDao.deleteBrewery(breweryId);
-		String action = "deleted";
-		String name = brewery.getName();
-		ModelAndView mav = new ModelAndView("redirect:/favorites");
-		mav.addObject("name", name);
-		mav.addObject("action", action);
-		return mav;
 	}
 
 }
