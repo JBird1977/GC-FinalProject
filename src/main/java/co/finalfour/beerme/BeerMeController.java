@@ -106,7 +106,11 @@ public class BeerMeController
 			@PathVariable("rating") Integer rating) {
 		Beer beer = new Beer();
 		beer = beerMeDao.findBeerById(beerId);
-		beer.setRating(rating);
+		if (rating == 0) {
+			beer.setRating(null);
+		} else {
+			beer.setRating(rating);
+		}
 		beerMeDao.updateBeer(beer);
 		return new ModelAndView("redirect:/favorites");
 	}
@@ -144,7 +148,11 @@ public class BeerMeController
 			@PathVariable("rating") Integer rating) {
 		Brewery brewery = new Brewery();
 		brewery = beerMeDao.findBreweryById(breweryId);
-		brewery.setRating(rating);
+		if (rating == 0) {
+			brewery.setRating(null);
+		} else {
+			brewery.setRating(rating);
+		}
 		beerMeDao.updateBrewery(brewery);
 		return new ModelAndView("redirect:/favorites");
 	}
