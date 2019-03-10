@@ -1,4 +1,4 @@
-package co.finalfour.beerme.entity.beer;
+package co.finalfour.beerme.model;
 
 import java.util.ArrayList;
 import java.util.List;

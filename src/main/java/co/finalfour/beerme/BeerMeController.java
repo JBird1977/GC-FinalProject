@@ -16,7 +16,7 @@ import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.Ingredient;
-import co.finalfour.beerme.entity.beer.Mood;
+import co.finalfour.beerme.model.Mood;
 import co.finalfour.beerme.service.BeerApiService;
 
 @Controller

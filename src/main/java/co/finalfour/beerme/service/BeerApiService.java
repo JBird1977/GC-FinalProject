@@ -12,10 +12,10 @@ import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
 import co.finalfour.beerme.entity.beer.BrewerySingleResponse;
 import co.finalfour.beerme.entity.beer.Ingredient;
-import co.finalfour.beerme.entity.beer.Mood;
 import co.finalfour.beerme.entity.beer.BeerResponse;
 import co.finalfour.beerme.entity.beer.BeerSingleResponse;
 import co.finalfour.beerme.entity.beer.IngredientsResponse;
+import co.finalfour.beerme.model.Mood;
 
 
 @Component
