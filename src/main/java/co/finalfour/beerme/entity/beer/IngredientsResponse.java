@@ -20,6 +20,4 @@ public class IngredientsResponse {
 				+ super.toString() + "]";
 	}
 	
-	
-	
 }

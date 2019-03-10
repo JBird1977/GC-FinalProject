@@ -2,18 +2,16 @@ package co.finalfour.beerme.entity.beer;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
 @Embeddable
 public class Available{
 	
-//	@Column(name="objAvailableDescription")
-//	@Type(type="text")
-	@Transient
+	@Column(name="objAvailableDescription")
+	@Type(type="text")
    	private String description;
-   	@Column(name="objAvailableId", unique=true)
+   	@Column(name="objAvailableId")
    	private String id;
    	@Column(name="objAvailableName")
    	private String name;
@@ -21,18 +19,23 @@ public class Available{
  	public String getDescription(){
 		return this.description;
 	}
+ 	
 	public void setDescription(String description){
 		this.description = description;
 	}
- 	public String getId(){
+ 	
+	public String getId(){
 		return this.id;
 	}
+	
 	public void setId(String id){
 		this.id = id;
 	}
- 	public String getName(){
+ 	
+	public String getName(){
 		return this.name;
 	}
+	
 	public void setName(String name){
 		this.name = name;
 	}

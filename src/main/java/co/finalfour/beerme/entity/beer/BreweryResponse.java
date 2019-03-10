@@ -3,40 +3,50 @@ package co.finalfour.beerme.entity.beer;
 import java.util.List;
 
 public class BreweryResponse{
-   	private Number currentPage;
+	
+   	private Integer currentPage;
    	private List<Brewery> data;
-   	private Number numberOfPages;
+   	private Integer numberOfPages;
    	private String status;
-   	private Number totalResults;
+   	private Integer totalResults;
 
- 	public Number getCurrentPage(){
+ 	public Integer getCurrentPage(){
 		return this.currentPage;
 	}
-	public void setCurrentPage(Number currentPage){
+	
+ 	public void setCurrentPage(Integer currentPage){
 		this.currentPage = currentPage;
 	}
+ 	
  	public List<Brewery> getData(){
 		return this.data;
 	}
-	public void setData(List<Brewery> data){
+	
+ 	public void setData(List<Brewery> data){
 		this.data = data;
 	}
- 	public Number getNumberOfPages(){
+ 	
+ 	public Integer getNumberOfPages(){
 		return this.numberOfPages;
 	}
-	public void setNumberOfPages(Number numberOfPages){
+	
+ 	public void setNumberOfPages(Integer numberOfPages){
 		this.numberOfPages = numberOfPages;
 	}
+ 	
  	public String getStatus(){
 		return this.status;
 	}
-	public void setStatus(String status){
+	
+ 	public void setStatus(String status){
 		this.status = status;
 	}
- 	public Number getTotalResults(){
+ 	
+ 	public Integer getTotalResults(){
 		return this.totalResults;
 	}
-	public void setTotalResults(Number totalResults){
+	
+ 	public void setTotalResults(Integer totalResults){
 		this.totalResults = totalResults;
 	}
 	

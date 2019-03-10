@@ -42,7 +42,7 @@ public class BeerApiService {
 	}
 	
 	public Beer findBeerById(String id) {
-		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/" + id)
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/" + id + "/")
 				.queryParam("key", key)
 				.toUriString();
 		System.out.println("BEER URL = " + url);

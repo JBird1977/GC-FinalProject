@@ -16,19 +16,24 @@ public class Images{
  	public String getIcon(){
 		return this.icon;
 	}
-	public void setIcon(String icon){
+	
+ 	public void setIcon(String icon){
 		this.icon = icon;
 	}
+ 	
  	public String getLarge(){
 		return this.large;
 	}
-	public void setLarge(String large){
+	
+ 	public void setLarge(String large){
 		this.large = large;
 	}
+ 	
  	public String getMedium(){
 		return this.medium;
 	}
-	public void setMedium(String medium){
+	
+ 	public void setMedium(String medium){
 		this.medium = medium;
 	}
 	

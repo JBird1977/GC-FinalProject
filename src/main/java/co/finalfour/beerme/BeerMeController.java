@@ -70,27 +70,30 @@ public class BeerMeController
 	}
 	
     @RequestMapping("/favorites")
-	public ModelAndView viewFavorites() {	
+	public ModelAndView viewFavorites() {
 		List<Beer> favorites = beerMeDao.findAllBeers();
-		System.out.println("favorites length = " + favorites.size());////////////testing
-		return new ModelAndView("favorites", "favorites", favorites);	
+		if (favorites.isEmpty()) {
+			return new ModelAndView("empty");
+		} else {
+			return new ModelAndView("favorites", "favorites", favorites);	
+		}
     }
     
 	@RequestMapping("/beer/{id}/add")
-	public ModelAndView addFavorite(@PathVariable("id") String id) {	
+	public ModelAndView addFavorite(@PathVariable("id") String objectBeerId) {	
 		Beer beer = new Beer();
-		beer = beerApiService.findBeerById(id);
+		beer = beerApiService.findBeerById(objectBeerId);
 		if (!beerMeDao.beerContains(beer)) {
 			beerMeDao.createBeer(beer);
-		}	
-		return new ModelAndView("redirect:/favorites");
+		}
+		return new ModelAndView("redirect:/favorites", "beer", beer);
 	}
 	
 	@RequestMapping("/beer/{id}/{rating}/ratingUpdate")
 	public ModelAndView updateFavoriteRating(@PathVariable("id") Long beerId,
 			@PathVariable("rating") Integer rating) {
 		Beer beer = new Beer();
-		beer = beerMeDao.findBeerById(beerId);//
+		beer = beerMeDao.findBeerById(beerId);
 		beer.setRating(rating);
 		beerMeDao.updateBeer(beer);
 		return new ModelAndView("redirect:/favorites");

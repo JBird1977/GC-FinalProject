@@ -62,10 +62,12 @@ public class BeerMeDao
 	public void deleteBrewery(Long id) {
 		Brewery brewery = em.getReference(Brewery.class, id);
 		em.remove(brewery);
+		em.flush();
 	}
 	
 	public void delete(Brewery brewery) {
 		em.remove(em.contains(brewery) ? brewery : em.merge(brewery));
+		em.flush();
 	}
 
 	public boolean BreweryContains(Brewery brewery) {
@@ -99,8 +101,12 @@ public class BeerMeDao
 		em.persist(beer);
 	}
 
-	public Beer findBeerById(Long beerId) {
-		return em.find(Beer.class, beerId);
+	public Beer findBeerById(Long id) {
+		return em.find(Beer.class, id);
+	}
+	
+	public Beer findBeerById(String objectBeerId) {
+		return em.find(Beer.class, objectBeerId);
 	}
 
 	public void updateBeer(Beer beer) {
