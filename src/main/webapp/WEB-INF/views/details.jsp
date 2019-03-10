@@ -11,9 +11,12 @@
 <p>This is the details page! :) </p>
 
 <h5>${name }</h5>
+
     <ul>
      <c:forEach var="beers" items="${ beers }">
         <li>${ beers.name }</li>
+        
+        <!--<c:forEach var="breweries" items="${breweries }><li>${breweries.name }</li></c:forEach>-->
         
      </c:forEach>
     </ul>
