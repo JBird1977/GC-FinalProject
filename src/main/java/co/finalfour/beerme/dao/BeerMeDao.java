@@ -69,6 +69,12 @@ public class BeerMeDao
 		em.remove(em.contains(brewery) ? brewery : em.merge(brewery));
 		em.flush();
 	}
+	
+	public boolean breweryHas(String id) {
+		return !em.createQuery("FROM Brewery WHERE id = :id", Brewery.class)
+		.setParameter("id", id)
+		.getResultList().isEmpty();
+	}
 
 	public boolean breweryContains(Brewery brewery) {
 		return em.contains(brewery);
@@ -126,6 +132,12 @@ public class BeerMeDao
 	
 	public void deleteBeer(Beer beer) {
 		em.remove(em.contains(beer) ? beer : em.merge(beer));
+	}
+	
+	public boolean beerHas(String id) {
+		return !em.createQuery("FROM Beer WHERE id = :id", Beer.class)
+		.setParameter("id", id)
+		.getResultList().isEmpty();
 	}
 
 	public boolean beerContains(Beer beer) {

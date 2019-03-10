@@ -48,7 +48,7 @@
 			<li>Rating: 
 				<c:choose>
 					<c:when test="${ not empty brewery.rating }">
-						${ brewery.rating } <a href="/beer/${ brewery.breweryId }/0/ratingUpdate">edit</a>
+						${ brewery.rating } <a href="/brewery/${ brewery.breweryId }/0/ratingUpdate">edit</a>
 					</c:when>
 					<c:otherwise>
 						<a href="/brewery/${ brewery.breweryId }/1/ratingUpdate"> 1 </a>
