@@ -12,7 +12,7 @@
 <p>Based on your mood and location: </p>
     
     <ul>
-     <c:forEach var="brewery" items="${ breweries }">
+     <c:forEach var="brewery" items="${ brewery }">
         <li>${ brewery.name }</li>
      </c:forEach>
     </ul>
