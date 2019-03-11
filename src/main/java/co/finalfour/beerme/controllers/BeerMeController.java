@@ -69,24 +69,27 @@ public class BeerMeController
 		return moods;
 	}
 	
-	@RequestMapping("/details/{name}")
-	public ModelAndView details(@PathVariable("name") String name) {
+//	@RequestMapping("/details/{name}")
+//	public ModelAndView details(@PathVariable("name") String name) {
+//		ModelAndView mav = new ModelAndView("details");
+//		List<Beer> beers = beerApiService.findBeers();
+//		List<Brewery> breweries = beerApiService.findBreweries();
+//		mav.addObject("beers", beers);
+//		mav.addObject("breweries",breweries);
+//		return mav;
+		
+	//}
+	@RequestMapping("/details/{breweryIdString}")
+	//public ModelAndView details2(@PathVariable("name") String name, @RequestParam(value="breweryIdString", required=false) String breweryIdString) 
+	public ModelAndView details2(@PathVariable("breweryIdString")  String breweryIdString) {
 		ModelAndView mav = new ModelAndView("details");
 		List<Beer> beers = beerApiService.findBeers();
-		List<Brewery> breweries = beerApiService.findBreweries();
-		mav.addObject("beers", beers);
-		mav.addObject("breweries",breweries);
-		return mav;
-		
-	}
-	@PostMapping("/details/{name}")
-	public ModelAndView details2(@PathVariable("name") String name, String breweryId) {
-		ModelAndView mav = new ModelAndView("details");
-		List<Beer> beers = beerApiService.findBeers();
-		List<Brewery> breweries = beerApiService.findBeersByBreweries(breweryId);
+		List<Brewery> breweries = beerApiService.findBeersByBreweries(breweryIdString);
+		List<Brewery> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
 		
 		mav.addObject("beers", beers);
 		mav.addObject("breweries",breweries);
+		mav.addObject("beersByBrewery", beersByBrewery);
 		return mav;
 	
 	}

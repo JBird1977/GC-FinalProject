@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Brewery{
@@ -45,8 +46,18 @@ public class Brewery{
    	private String website;
    	
    	private Integer rating;
+   	@JsonProperty("breweryId")
+   	private String breweryIdString;
    	
-    @ManyToMany(cascade =
+    public String getBreweryIdString() {
+		return breweryIdString;
+	}
+
+	public void setBreweryIdString(String breweryIdString) {
+		this.breweryIdString = breweryIdString;
+	}
+
+	@ManyToMany(cascade =
         {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "beer_brewery",
         joinColumns = {

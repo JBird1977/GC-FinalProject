@@ -9,12 +9,12 @@
 <title>Search for Beers</title>
 </head>
 <body>
-<input type = "text">
+<!-- <input type = "text">-->
 
 
 
-<c:ForEach var = "beer" items = "${beers}">
+<!--<c:ForEach var = "beer" items = "${beers}">
 
-</c:ForEach>
+</c:ForEach>-->
 </body>
 </html>

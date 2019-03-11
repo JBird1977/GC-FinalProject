@@ -10,11 +10,11 @@
 </head>
 <body>
 <p>Based on your mood and location: </p>
-    <form action="/details/{name}" method="post">
+    <form action="/details/{breweryIdString}">
    
     <ul>
      <c:forEach var="brewery" items="${ brewery }">
-        <li><input name="breweryId" value="${breweryId }"><a href="/details/${brewery.name }">${ brewery.name }</a></li>
+        <li><input type="hidden" name="${ brewery.breweryIdString}"><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
         
      </c:forEach>
     </ul>

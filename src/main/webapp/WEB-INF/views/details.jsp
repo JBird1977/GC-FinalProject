@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Details</title>
 </head>
 <body>
 <p>This is the details page! :) </p>
 
-<h5>${name }</h5>
+<h5>Give me the names</h5>
 
     <ul>
-     <c:forEach var="beers" items="${ breweries }">
+     <c:forEach var="beers" items="${ beersByBrewery }">
         <li>${ beers.name }</li>
         
        
