@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: beer-me
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Teddy
+Built-By: carlscozzari
 Implementation-Vendor-Id: co.finalfour
-Build-Jdk: 1.8.0_191
+Build-Jdk: 1.8.0_25
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/beer-me
 Created-By: Maven Integration for Eclipse
