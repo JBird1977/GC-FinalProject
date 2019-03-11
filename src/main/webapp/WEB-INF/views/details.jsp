@@ -13,11 +13,10 @@
 <h5>${name }</h5>
 
     <ul>
-     <c:forEach var="beers" items="${ beers }">
+     <c:forEach var="beers" items="${ breweries }">
         <li>${ beers.name }</li>
         
-        <!--<c:forEach var="breweries" items="${breweries }><li>${breweries.name }</li></c:forEach>-->
-        
+       
      </c:forEach>
     </ul>
 

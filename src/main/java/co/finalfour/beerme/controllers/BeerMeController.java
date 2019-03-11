@@ -79,6 +79,15 @@ public class BeerMeController
 		return mav;
 		
 	}
+	@PostMapping("/details/{name}")
+	public ModelAndView details2(@PathVariable("name") String name, String breweryId) {
+		ModelAndView mav = new ModelAndView("details");
+		List<Beer> beers = beerApiService.findBeers();
+		List<Brewery> breweries = beerApiService.findBeersByBreweries(breweryId);
+		
+		mav.addObject("beers", beers);
+		mav.addObject("breweries",breweries);
+		return mav;
 	
-    
+	}
 }
