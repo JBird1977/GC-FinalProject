@@ -12,14 +12,21 @@
 
 <h5>Give me the names</h5>
 
-    <ul>
+ <ul>
      <c:forEach var="beers" items="${ beersByBrewery }">
-        <li>${ beers.name }</li>
+        <li>${ beers.name }
+        	<!-- not connected to the DAO...yet... -->
+        	<!-- beer id will be used for database -->
+      		<a href="/beer/${ beers.id }/1/ratingUpdate"> 1 </a>
+			<a href="/beer/${ beers.id }/2/ratingUpdate"> 2 </a>
+			<a href="/beer/${ beers.id }/3/ratingUpdate"> 3 </a>
+			<a href="/beer/${ beers.id }/4/ratingUpdate"> 4 </a>
+			<a href="/beer/${ beers.id }/5/ratingUpdate"> 5 </a> 
+		</li>
         
        
      </c:forEach>
     </ul>
-
 
 </body>
 </html>
