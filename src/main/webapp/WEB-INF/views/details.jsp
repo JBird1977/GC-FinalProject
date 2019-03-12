@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>This is the details page! :) </p>
-<h5>${brewery.breweries.name }</h5>
+
 <h5>Give me the names</h5>
 
  <ul>
