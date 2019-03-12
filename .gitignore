@@ -29,6 +29,13 @@ src/main/resources/config/application.properties
 config/
 /config/
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+<<<<<<< HEAD
 /target/m2e-wtp/web-resources/META-ING/MANIFEST.MF
 target/classes/config/application.properties
+=======
+target/classes/config/application.properties
+/config
+/src/main/resources/config/application.properties
+/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+>>>>>>> 3337accc6be9c1b7303d2bf62b7c0c2734391876
 /target/classes/config/application.properties
