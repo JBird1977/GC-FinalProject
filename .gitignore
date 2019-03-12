@@ -25,6 +25,10 @@ HELP.md
 /.nb-gradle/
 /build/
 src/main/resources/config/application.properties
+/src/main/resources/config/application.properties
 config/
+/config/
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+/target/m2e-wtp/web-resources/META-ING/MANIFEST.MF
 target/classes/config/application.properties
+/target/classes/config/application.properties
