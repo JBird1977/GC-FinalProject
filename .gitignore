@@ -28,3 +28,7 @@ src/main/resources/config/application.properties
 config/
 target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 target/classes/config/application.properties
+/config
+/src/main/resources/config/application.properties
+/target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+/target/classes/config/application.properties
