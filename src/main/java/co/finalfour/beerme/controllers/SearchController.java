@@ -19,7 +19,7 @@ import co.finalfour.beerme.service.BeerApiService;
 import co.finalfour.beerme.service.SearchApiService;
 
 @Controller
-public class TestController {
+public class SearchController {
 	
 	@Autowired
 	private SearchApiService searchApiService;
