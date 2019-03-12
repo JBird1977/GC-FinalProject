@@ -9,12 +9,12 @@
 </head>
 <body>
 <p>This is the details page! :) </p>
-
+<h5>${brewery.breweries.name }</h5>
 <h5>Give me the names</h5>
 
  <ul>
      <c:forEach var="beers" items="${ beersByBrewery }">
-        <li>${ beers.name }
+        <li><button type="button">Fav Flave</button>${ beers.name }
         	<!-- not connected to the DAO...yet... -->
         	<!-- beer id will be used for database -->
       		<a href="/beer/${ beers.id }/1/ratingUpdate"> 1 </a>
