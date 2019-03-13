@@ -27,7 +27,23 @@ ${beer.id} ${beer.name}<br>
 <c:otherwise>
 </c:otherwise>
 </c:choose>
+<c:choose>
+<c:when test ="${not empty hop}">
+${hop.id} ${hop.name}<br>
+</c:when>
+<c:otherwise>
+</c:otherwise>
+</c:choose>
+<c:choose>
+<c:when test="${not empty hops }">
+<c:forEach var = "hops" items = "${hops}">
+${hops.id} ${hops.name}<br>
+</c:forEach>
+</c:when>
+<c:otherwise>
 
+</c:otherwise>
+</c:choose>
 <c:choose>
 <c:when test="${not empty adjuncts }">
 <c:forEach var = "adjuncts" items = "${adjuncts}">

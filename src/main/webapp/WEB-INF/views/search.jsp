@@ -41,7 +41,8 @@
 </div>
 
 
- <!-- Search Beer by Beer Id
+
+
 <button onclick="beerId()">Click Me</button>
 <div>
 	<form action = "/searchBy">
@@ -66,9 +67,18 @@ Search Breweries by Beer Id
 		<input class="brewbeerId" style="display:none" type = "text" name = "brewbeerId" value ="null"/>
 		<button class="brewbeerId" type = "submit">Search</button>
 	</form>
-</div -->
+</div>
 <br><br>
 <br>
+
+<form action = "/searchBy">
+<p>Search Beer by Beer Id<input type = "text" name = "beerId" value = "null"/></p>
+<p>Search Adjunct by Adjunct Id<input type = "number" name = "adjunctId"value = "0"/></p>
+<p>Search Breweries by Beer Id<input type = "text" name = "brewbeerId" value ="null"/></p>
+<p>Search Hops by Hop Id<input type = "text" name = "hopId" value ="null"/><p>
+<button type = "submit">Search</button>
+</form>
+
 <p>
 <a href = "/searchBeers">
 Search All Beers
@@ -79,6 +89,7 @@ Search All Beers
 Search All Adjuncts
 </a>
 </p>
+<<<<<<< Updated upstream
 <script>
 	function searchFunction() {
 		search1Function();
@@ -146,5 +157,12 @@ Search All Adjuncts
 		}
 	}
 </script>
+
+<p>
+<a href = "/searchHops">
+Search All Hops
+</a>
+
+
 </body>
 </html>

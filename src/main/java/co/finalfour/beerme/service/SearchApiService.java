@@ -15,6 +15,9 @@ import co.finalfour.beerme.entity.beer.BeerResponse;
 import co.finalfour.beerme.entity.beer.BeerSingleResponse;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryResponse;
+import co.finalfour.beerme.entity.beer.Hop;
+import co.finalfour.beerme.entity.beer.HopResponse;
+import co.finalfour.beerme.entity.beer.HopSingleResponse;
 
 @Component
 public class SearchApiService {
@@ -46,9 +49,28 @@ public class SearchApiService {
 				.queryParam("key", key)
 				.toUriString();
 		AdjunctResponse response = restTemplate.getForObject(url, AdjunctResponse.class);		
+		System.out.println(url);
 		return response.getData();
 	}
 
+	public List<Hop> findAllHop() {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/hops/")
+				.queryParam("key", key)
+				.toUriString();
+		HopResponse response = restTemplate.getForObject(url, HopResponse.class);		
+		System.out.println(url);
+		return response.getData();
+	}
+	
+	public Hop findHopById(int hopId) {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/hop/" + hopId + "/")
+				.queryParam("key", key)
+				.toUriString();
+		HopSingleResponse response = restTemplate.getForObject(url, HopSingleResponse.class);		
+		return response.getData();		
+	}
+	
+	
 	public List<Brewery> findBreweriesByBeerId(String id) {
 		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/beer/" + id + "/breweries/")
 				.queryParam("key", key)
@@ -56,8 +78,9 @@ public class SearchApiService {
 		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);		
 		return response.getData();	
 	}
-	public Adjunct findAdjunctById(int id) {
-		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/adjunct/" + id + "/")
+	
+	public Adjunct findAdjunctById(int adjunctId) {
+		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/adjunct/" + adjunctId + "/")
 				.queryParam("key", key)
 				.toUriString();
 		AdjunctSingleResponse response = restTemplate.getForObject(url, AdjunctSingleResponse.class);		

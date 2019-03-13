@@ -15,6 +15,7 @@ import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Adjunct;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.Brewery;
+import co.finalfour.beerme.entity.beer.Hop;
 import co.finalfour.beerme.service.BeerApiService;
 import co.finalfour.beerme.service.SearchApiService;
 
@@ -32,8 +33,11 @@ public class SearchController {
 	@RequestMapping("/searchBy") 
 	public ModelAndView searchBy(@RequestParam("beerId") String beerId,
 			@RequestParam("adjunctId") int adjunctId,
-			@RequestParam("brewbeerId") String brewbeerId) {
+			@RequestParam("brewbeerId") String brewbeerId,
+			@RequestParam("hopId") int hopId) {
 		ModelAndView mav = new ModelAndView("searchResults");
+		
+		
 		if(!beerId.equalsIgnoreCase("null")) {
 			Beer beer = searchApiService.findBeerById(beerId);
 			mav.addObject("beer", beer);
@@ -47,6 +51,11 @@ public class SearchController {
 			List<Brewery> breweries = searchApiService.findBreweriesByBeerId(brewbeerId);
 			mav.addObject("breweries", breweries);
 		}
+		if (hopId > 0) {
+			Hop hop = searchApiService.findHopById(hopId);
+			mav.addObject("hops", hop);
+		}
+	
 		return mav;
 		
 	}
@@ -59,9 +68,10 @@ public class SearchController {
 	
 	@RequestMapping("/searchResults/beer/{id}/")
 	public ModelAndView searchBeerId(@PathVariable("id") String id) {
-		Beer beer = searchApiService.findBeerById(id);
-		return new ModelAndView("searchResults", "beer", beer);
+	Beer beer = searchApiService.findBeerById(id);
+	return new ModelAndView("searchResults", "beer", beer);
 	}
+	
 	@RequestMapping("/searchAdjuncts")
 	public ModelAndView searhAllAdjuncts() {
 		List<Adjunct> adjuncts=searchApiService.findAllAdjuncts();
@@ -72,6 +82,17 @@ public class SearchController {
 	public ModelAndView searchAdjunctId(@PathVariable("id") int id) {
 		Adjunct adjunct = searchApiService.findAdjunctById(id);
 		return new ModelAndView("searchResults", "adjunct", adjunct);
+	}
+	
+	@RequestMapping("/searchHops")
+	public ModelAndView searchAllHop() {
+		List<Hop> hops=searchApiService.findAllHop();
+		return new ModelAndView("searchResults", "hops", hops);
+	}
+	@RequestMapping("/searchResults/hop/{id}/")
+	public ModelAndView searchHopId(@PathVariable("id") int id) {
+		Hop hop = searchApiService.findHopById(id);
+		return new ModelAndView("searchResults", "hops", hop);
 	}
 	
 }
