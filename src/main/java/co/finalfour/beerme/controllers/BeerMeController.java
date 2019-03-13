@@ -45,7 +45,10 @@ public class BeerMeController
     @RequestMapping ("/")
     public ModelAndView index()
     {
-    	return new ModelAndView("index", "moods", getMoods());
+    	ModelAndView mav = new ModelAndView("index");
+    	mav.addObject("moods", getMoods());
+    	mav.addObject("beerStyles", getBeerStyle());
+    	return mav;
     	
     }
     
@@ -69,6 +72,21 @@ public class BeerMeController
 		return moods;
 	}
 	
+	
+	public List<String> getBeerStyle()
+	{
+		List<String> beerStyles = new ArrayList<>();
+		beerStyles.add("Belgian And French Origin Ales");
+		beerStyles.add("British Origin Ales");
+		beerStyles.add("German Origin Ales");
+		beerStyles.add("North American Origin Ales");
+		beerStyles.add("European-germanic Lager");
+		beerStyles.add("North American Lager");
+		beerStyles.add("Other Lager");
+		beerStyles.add("Mead, Cider, & Perry");
+		beerStyles.add("Hybrid/mixed Beer");
+		return beerStyles;
+	}
 //	@RequestMapping("/details/{name}")
 //	public ModelAndView details(@PathVariable("name") String name) {
 //		ModelAndView mav = new ModelAndView("details");

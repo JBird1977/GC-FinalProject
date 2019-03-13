@@ -18,6 +18,14 @@ Mood <select>
     </select>
 </p>
 
+<p> 
+Style <select>
+    <c:forEach var="beerStyles" items="${beerStyles}">
+    <option value ="${beerStyles}" >"${beerStyles}"</option>
+    </c:forEach>
+    </select>
+</p>
+
 <p>Zip Code <input type="text" name="zip"/></p>
 <p>City <input type="text" name="locality"/></p>
 <p>State <input type="text" name="region"/></p>
