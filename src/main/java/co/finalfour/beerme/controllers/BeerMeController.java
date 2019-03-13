@@ -1,7 +1,9 @@
 package co.finalfour.beerme.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,9 +59,38 @@ public class BeerMeController
                                 @RequestParam(value="zip", required=false) String zip,
                                 @RequestParam(value="locality", required=false) String locality,
                                 @RequestParam(value="region", required=false) String region)
+                                
+    							
     {    
-        List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
-    	return new ModelAndView("results", "brewery", breweries);
+    	ModelAndView mav = new ModelAndView("results");
+    	//Testing using a map.
+    	List<Brewery> beersByBrewery = null;
+    	String breweryIdContainer = "";
+    	List <String> breweryIdList = new ArrayList<>();
+    	List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
+    	Map<String, List<Brewery>> test = new HashMap<String, List<Brewery>>();
+    		for(int i = 0; i< breweries.size(); i++) {
+    			breweryIdList.add(breweries.get(i).getBreweryIdString());
+    			breweryIdContainer = breweries.get(i).getBreweryIdString();
+    			beersByBrewery = beerApiService.findBeersByBreweries(breweryIdList.get(i));
+    		test.put(breweryIdContainer, beersByBrewery);
+    		}
+    	
+    	
+    	
+       
+//       for(int i = 0; i < breweries.size(); i++) {
+//    		   breweryIdList.add(breweries.get(i).getBreweryIdString());
+//    		   
+//       		}
+//        
+     //   List<Brewery> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdList.get(0));
+    	mav.addObject("mapOfBeerBrew",test);
+        mav.addObject("breweryIdList",breweryIdList);
+        mav.addObject("brewery", breweries);
+        mav.addObject("beersByBrewery",beersByBrewery);
+        
+    	return mav;
     }
 	
 	public List<String> getMoods()

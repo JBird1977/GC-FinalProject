@@ -12,10 +12,20 @@
 <p>Based on your mood and location: </p>
     <form action="/details/{breweryIdString}">
    
-    <ul>
+   
+    
      <c:forEach var="brewery" items="${ brewery }">
-        <li><input type="hidden" name="${ brewery.breweryIdString}"><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
-        
+       <ol><li><input type="hidden" name="${ brewery.breweryIdString}"><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
+       </ol>
+       <c:forEach var="entry" items="${mapOfBeerBrew }">
+       <c:forEach var = "info" items="${entry.value}">
+       <li>${info.name }</li>
+		</c:forEach>       
+       </c:forEach>
+       
+       <!--   <c:forEach var="beers" items="${ beersByBrewery }">
+        ${ beers.name }
+        </c:forEach>-->
      </c:forEach>
     </ul>
     
