@@ -58,13 +58,15 @@ public class BeerMeController
     public ModelAndView results(@RequestParam(value="mood", required=false)String mood,
                                 @RequestParam(value="zip", required=false) String zip,
                                 @RequestParam(value="locality", required=false) String locality,
-                                @RequestParam(value="region", required=false) String region)
+                                @RequestParam(value="region", required=false) String region
+                                )
                                 
     							
     {    
     	ModelAndView mav = new ModelAndView("results");
     	//Testing using a map.
     	List<Brewery> beersByBrewery = null;
+    	//List<Beer> beerId = null;
     	String breweryIdContainer = "";
     	List <String> breweryIdList = new ArrayList<>();
     	List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
@@ -73,6 +75,12 @@ public class BeerMeController
     			breweryIdList.add(breweries.get(i).getBreweryIdString());
     			breweryIdContainer = breweries.get(i).getBreweryIdString();
     			beersByBrewery = beerApiService.findBeersByBreweries(breweryIdList.get(i));
+//    			beerId.add(beerApiService.findBeerById(beersByBrewery.get(i).getId()));
+//    				for(int j = 0; j<beerId.size(); j++) {
+//    	    		
+//    				}
+    			
+    			
     		test.put(breweryIdContainer, beersByBrewery);
     		}
     	
@@ -142,4 +150,9 @@ public class BeerMeController
 		return mav;
 	
 	}
+//	@RequestMapping("/searchStyle")
+//    public ModelAndView searchStyle(@RequestParam("styleSearch") String styleSearch) {
+//        List<Style> styles = searchApiService.randomStyle(styleSearch);
+//        return new ModelAndView("searchResults", "styles", styles);
+//    }
 }

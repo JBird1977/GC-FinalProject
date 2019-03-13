@@ -19,7 +19,7 @@
        </ol>
        <c:forEach var="entry" items="${mapOfBeerBrew }">
        <c:forEach var = "info" items="${entry.value}">
-       <li>${info.name }</li>
+       <li>${info }</li>
 		</c:forEach>       
        </c:forEach>
        
