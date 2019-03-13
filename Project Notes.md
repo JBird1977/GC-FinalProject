@@ -2,20 +2,15 @@
 Final Project that can search for and recommend breweries based on user's mood
 --
 
-In order to pull the "Style" for our MVP, we plan to parse the a field in the API. This field is found within a beer entry. 
-Among the fields in Beer is a list called "Style" among the fields in this is "Style" which will list something like "New England Lager". 
-We will parse this string for one of several types of beer. This will be the style that we will use to
-influence user recommendations.
+(Rough draft)
+User will choose a mood and style and enter a location
 
-Style names are:
+Location is highest priority
+Style is second priority
+Mood is third priority
 
-North American Origin Ales
-German Origin Ales
-British Origin Ales
-Belgian And French Origin Ales
-Hybrid/mixed Beer
-Mead, Cider, & Perry
-North American Lager
-Other Lager
-European-germanic Lager
+We will look at the breweries in the user's location
+Of those  breweries we will look at the list of beers and find breweries with the style of beer the user is selecting
+We will compare those beers to the stat associated with the user's mood. 
+The top three beers that most closely matches this criteria will be listed along with the brewery on the results page. 
 
