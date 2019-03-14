@@ -55,11 +55,11 @@ public class BeerMeController
     }
     
     @PostMapping("/results")
-    public ModelAndView results(@RequestParam(value="mood", required=false)String mood,
-                                @RequestParam(value="zip", required=false) String zip,
+    public ModelAndView results(@RequestParam(value="zip", required=false) String zip,
                                 @RequestParam(value="locality", required=false) String locality,
-                                @RequestParam(value="region", required=false) String region
-                                )
+                                @RequestParam(value="region", required=false) String region,
+                                @ModelAttribute("beerStyles") String beerStyles,
+                                @ModelAttribute("moods")String moods)
                                 
     							
     {    
@@ -68,7 +68,7 @@ public class BeerMeController
     	List<Beer> beersByBrewery = null;
     	//List<Beer> beerId = null;
     	String breweryIdContainer = "";
-    	
+    	System.out.println(beerStyles);
     	List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
     	Map<String, List<Beer>> test = new HashMap<>();
     		for(int i = 0; i< breweries.size(); i++) {

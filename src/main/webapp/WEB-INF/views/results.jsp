@@ -10,7 +10,8 @@
 </head>
 <body>
 <p>Based on your mood and location: </p>
-    
+ <h5>${beerStyles}</h5>
+ <h5>${moods}</h5>   
    
    
     
@@ -27,6 +28,5 @@
         ${ beers.name }
         </c:forEach>-->
      </c:forEach>
-    </ul>
 </body>
 </html>

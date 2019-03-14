@@ -11,15 +11,15 @@
 <form action = "/results" method=post>
 
 <p> 
-Mood <select>
+Mood <select name="moods">
     <c:forEach var="moods" items="${moods}">
-    <option value ="${moods}" >"${moods}"</option>
+    <option id="mood" value ="${moods}" >"${moods}"</option>
     </c:forEach>
     </select>
 </p>
 
 <p> 
-Style <select>
+Style <select name="beerStyles">
     <c:forEach var="beerStyles" items="${beerStyles}">
     <option value ="${beerStyles}" >"${beerStyles}"</option>
     </c:forEach>
