@@ -75,6 +75,44 @@ public class FavoritesController {
 		return mav;
 	}
 	
+	@RequestMapping("/{fave}/{id}/{rating}/add/")
+	public ModelAndView addFavoriteBeerAndRating(@PathVariable("id") String id,
+			@PathVariable("fave") String fave,
+			@PathVariable("rating") Integer rating) {
+		
+		ModelAndView mav = new ModelAndView("redirect:/favorites");
+		String action = "added";
+		String name = "";
+		
+		if (fave.equalsIgnoreCase("beer")) {
+			Beer beer = new Beer();
+			beer = beerApiService.findBeerById(id);
+			if (!beerMeDao.beerHas(id)) {
+				beer.setIngredients(beerApiService.findIngredientsByBeer(id));
+				beer.setRating(rating);
+				beerMeDao.createBeer(beer);
+			} else {
+				action = "already added";
+			}
+			name = beer.getName();
+		} else if (fave.equalsIgnoreCase("brewery")) {
+			Brewery brewery = new Brewery();
+			brewery = beerApiService.findBreweryById(id);
+			if (!beerMeDao.breweryHas(id)) {
+				brewery.setLocations(beerApiService.findLocationsByBreweryId(id));
+				brewery.setRating(rating);
+				beerMeDao.createBrewery(brewery);
+			} else {
+				action = "already added";
+			}
+			name = brewery.getName();			
+		}
+		
+		mav.addObject("name", name);
+		mav.addObject("action", action);
+		return mav;
+	}
+	
 	@RequestMapping("/{fave}/{id}/delete")
 	public ModelAndView deleteFavoriteBeer(@PathVariable("id") Long id,
 			@PathVariable("fave") String fave) {

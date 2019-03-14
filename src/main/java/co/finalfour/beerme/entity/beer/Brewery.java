@@ -28,22 +28,34 @@ public class Brewery{
 	@Column(name="id")
 	private Long breweryId;
 	
-   	private String createDate;
-   	@Column @Type(type="text")
-   	private String description;
-   	private String established;
    	@Column(name="objBreweryId", unique=true)
    	private String id;
-   	@Embedded @Type(type="Images")
-   	private Images images;
-   	private String isOrganic;
-   	@ElementCollection 
-   	private List<Location> locations;
+   	@Column(name="objBreweryName")
    	private String name;
+   	@Column(name="objBreweryDescription") @Type(type="text")
+   	private String description;	
+   	private String createDate;
+   	@ElementCollection 
+   	private List<Location> locations;  
+   	@Column(name="objBreweryStatus")
    	private String status;
+   	@Column(name="objBreweryStatusDisplay")
    	private String statusDisplay;
    	private String updateDate;
+   	@Column(name="objBreweryWebsite")
    	private String website;
+   	private char isOrganic;
+   	private String socialAccounts;
+	private char withSocialAccounts;
+	@Embedded @Type(type="Guild")
+	private Guild brewersAssociation;
+	private char withGuilds;
+	private char withLocations;
+	@ElementCollection
+	private List<String> alternativeNames;
+	private char withAlternativeNames;
+	@Column(name="objBreweryEstablished")
+	private Integer established;
    	
    	private Integer rating;
    	@JsonProperty("breweryId")
@@ -75,108 +87,164 @@ public class Brewery{
     )
 	private List<Beer> beers = new ArrayList<Beer>();
 
- 	public String getCreateDate(){
-		return this.createDate;
-	}
-	
- 	public void setCreateDate(String createDate){
-		this.createDate = createDate;
-	}
- 	
- 	public String getDescription(){
-		return this.description;
-	}
-	
- 	public void setDescription(String description){
-		this.description = description;
-	}
- 	
- 	public String getEstablished(){
-		return this.established;
-	}
-	
- 	public void setEstablished(String established){
-		this.established = established;
-	}
- 	
- 	public String getId(){
-		return this.id;
-	}
-	
- 	public void setId(String id){
-		this.id = id;
-	}
- 	
- 	public Images getImages(){
-		return this.images;
-	}
-	
- 	public void setImages(Images images){
-		this.images = images;
-	}
- 	
- 	public String getIsOrganic(){
-		return this.isOrganic;
-	}
-	
- 	public void setIsOrganic(String isOrganic){
-		this.isOrganic = isOrganic;
-	}
- 	
- 	public List<Location> getLocations(){
-		return this.locations;
-	}
-	
- 	public void setLocations(List<Location> locations){
-		this.locations = locations;
-	}
- 	
- 	public String getName(){
-		return this.name;
-	}
-	
- 	public void setName(String name){
-		this.name = name;
-	}
- 	
- 	public String getStatus(){
-		return this.status;
-	}
-	
- 	public void setStatus(String status){
-		this.status = status;
-	}
- 	
- 	public String getStatusDisplay(){
-		return this.statusDisplay;
-	}
-	
- 	public void setStatusDisplay(String statusDisplay){
-		this.statusDisplay = statusDisplay;
-	}
- 	
- 	public String getUpdateDate(){
-		return this.updateDate;
-	}
-	
- 	public void setUpdateDate(String updateDate){
-		this.updateDate = updateDate;
-	}
- 	
- 	public String getWebsite(){
-		return this.website;
-	}
-	
- 	public void setWebsite(String website){
-		this.website = website;
-	}
-	
 	public Long getBreweryId() {
 		return breweryId;
 	}
 
 	public void setBreweryId(Long breweryId) {
 		this.breweryId = breweryId;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createDate) {
+		this.createDate = createDate;
+	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
+
+	public void setLocations(List<Location> locations) {
+		this.locations = locations;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getStatusDisplay() {
+		return statusDisplay;
+	}
+
+	public void setStatusDisplay(String statusDisplay) {
+		this.statusDisplay = statusDisplay;
+	}
+
+	public String getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(String updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public char getIsOrganic() {
+		return isOrganic;
+	}
+
+	public void setIsOrganic(char isOrganic) {
+		this.isOrganic = isOrganic;
+	}
+
+	public String getSocialAccounts() {
+		return socialAccounts;
+	}
+
+	public void setSocialAccounts(String socialAccounts) {
+		this.socialAccounts = socialAccounts;
+	}
+
+	public char getWithSocialAccounts() {
+		return withSocialAccounts;
+	}
+
+	public void setWithSocialAccounts(char withSocialAccounts) {
+		this.withSocialAccounts = withSocialAccounts;
+	}
+
+	public Guild getBrewersAssociation() {
+		return brewersAssociation;
+	}
+
+	public void setBrewersAssociation(Guild brewersAssociation) {
+		this.brewersAssociation = brewersAssociation;
+	}
+
+	public char getWithGuilds() {
+		return withGuilds;
+	}
+
+	public void setWithGuilds(char withGuilds) {
+		this.withGuilds = withGuilds;
+	}
+
+	public char getWithLocations() {
+		return withLocations;
+	}
+
+	public void setWithLocations(char withLocations) {
+		this.withLocations = withLocations;
+	}
+
+	public List<String> getAlternativeNames() {
+		return alternativeNames;
+	}
+
+	public void setAlternativeNames(List<String> alternativeNames) {
+		this.alternativeNames = alternativeNames;
+	}
+
+	public char getWithAlternativeNames() {
+		return withAlternativeNames;
+	}
+
+	public void setWithAlternativeNames(char withAlternativeNames) {
+		this.withAlternativeNames = withAlternativeNames;
+	}
+
+	public Integer getEstablished() {
+		return established;
+	}
+
+	public void setEstablished(Integer established) {
+		this.established = established;
+	}
+
+	public Integer getRating() {
+		return rating;
+	}
+
+	public void setRating(Integer rating) {
+		this.rating = rating;
 	}
 
 	public List<Beer> getBeers() {
@@ -186,21 +254,17 @@ public class Brewery{
 	public void setBeers(List<Beer> beers) {
 		this.beers = beers;
 	}
-	
-	public Integer getRating() {
-		return rating;
-	}
-
-	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
 
 	@Override
 	public String toString() {
-		return "Brewery [createDate=" + createDate + ", description=" + description + ", established=" + established
-				+ ", id=" + id + ", images=" + images + ", isOrganic=" + isOrganic + ", locations=" + locations
-				+ ", name=" + name + ", status=" + status + ", statusDisplay=" + statusDisplay + ", updateDate="
-				+ updateDate + ", website=" + website + "]";
+		return "Brewery [breweryId=" + breweryId + ", id=" + id + ", name=" + name + ", description=" + description
+				+ ", createDate=" + createDate + ", locations=" + locations + ", status=" + status + ", statusDisplay="
+				+ statusDisplay + ", updateDate=" + updateDate + ", website=" + website + ", isOrganic=" + isOrganic
+				+ ", socialAccounts=" + socialAccounts + ", withSocialAccounts=" + withSocialAccounts
+				+ ", brewersAssociation=" + brewersAssociation + ", withGuilds=" + withGuilds + ", withLocations="
+				+ withLocations + ", alternativeNames=" + alternativeNames + ", withAlternativeNames="
+				+ withAlternativeNames + ", established=" + established + ", rating=" + rating + ", breweryIdString="
+				+ breweryIdString + ", beers=" + beers + "]";
 	}
 	
 }

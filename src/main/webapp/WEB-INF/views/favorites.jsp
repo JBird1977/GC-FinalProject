@@ -45,8 +45,6 @@
 			</dl>
 		</ul>
 	</c:forEach>
-	<div>Return <a href="/">home</a>.</div>
-	<div>Return to <a href="/test">test</a>.</div>
 </div>
 <div>
 	<c:forEach var="brewery" items="${ breweries }">

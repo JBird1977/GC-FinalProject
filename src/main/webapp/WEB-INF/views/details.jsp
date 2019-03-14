@@ -13,18 +13,16 @@
 <h5>Give me the names</h5>
 
  <ul>
-     <c:forEach var="beers" items="${ beersByBrewery }">
-        <li><button type="button">Fav Flave</button>${ beers.name }
-        	<!-- not connected to the DAO...yet... -->
-        	<!-- beer id will be used for database -->
-      		<a href="/beer/${ beers.id }/1/ratingUpdate"> 1 </a>
-			<a href="/beer/${ beers.id }/2/ratingUpdate"> 2 </a>
-			<a href="/beer/${ beers.id }/3/ratingUpdate"> 3 </a>
-			<a href="/beer/${ beers.id }/4/ratingUpdate"> 4 </a>
-			<a href="/beer/${ beers.id }/5/ratingUpdate"> 5 </a> 
-		</li>
-        
-       
+     <c:forEach var="beer" items="${ beersByBrewery }">
+
+     	<li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name } <br>
+			<c:choose>
+				<c:when test="${ not empty beer.rating }">
+					${ beer.rating }
+				</c:when>
+			</c:choose>
+		</li><br>
+            
      </c:forEach>
     </ul>
 
