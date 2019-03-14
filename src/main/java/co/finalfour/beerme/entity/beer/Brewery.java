@@ -47,8 +47,8 @@ public class Brewery{
    	private char isOrganic;
    	private String socialAccounts;
 	private char withSocialAccounts;
-	@Embedded @Type(type="Guild")
-	private Guild brewersAssociation;
+//	@Embedded @Type(type="Guild")
+//	private Guild brewersAssociation;
 	private char withGuilds;
 	private char withLocations;
 	@ElementCollection
@@ -191,13 +191,13 @@ public class Brewery{
 		this.withSocialAccounts = withSocialAccounts;
 	}
 
-	public Guild getBrewersAssociation() {
+/*	public Guild getBrewersAssociation() {
 		return brewersAssociation;
 	}
 
 	public void setBrewersAssociation(Guild brewersAssociation) {
 		this.brewersAssociation = brewersAssociation;
-	}
+	}*/
 
 	public char getWithGuilds() {
 		return withGuilds;
@@ -261,7 +261,8 @@ public class Brewery{
 				+ ", createDate=" + createDate + ", locations=" + locations + ", status=" + status + ", statusDisplay="
 				+ statusDisplay + ", updateDate=" + updateDate + ", website=" + website + ", isOrganic=" + isOrganic
 				+ ", socialAccounts=" + socialAccounts + ", withSocialAccounts=" + withSocialAccounts
-				+ ", brewersAssociation=" + brewersAssociation + ", withGuilds=" + withGuilds + ", withLocations="
+				+ ", brewersAssociation=" //+ brewersAssociation
+				+ ", withGuilds=" + withGuilds + ", withLocations="
 				+ withLocations + ", alternativeNames=" + alternativeNames + ", withAlternativeNames="
 				+ withAlternativeNames + ", established=" + established + ", rating=" + rating + ", breweryIdString="
 				+ breweryIdString + ", beers=" + beers + "]";

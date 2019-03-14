@@ -10,16 +10,16 @@
 </head>
 <body>
 <p>Based on your mood and location: </p>
-    <form action="/details/{breweryIdString}">
+    
    
    
     
      <c:forEach var="brewery" items="${ brewery }">
-       <ol><li><input type="hidden" name="${ brewery.breweryIdString}"><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
+       <ol><li><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
        </ol>
        <c:forEach var="entry" items="${mapOfBeerBrew }">
        <c:forEach var = "info" items="${entry.value}">
-       <li>${info }</li>
+       <li>${info.name } ${info.style.category.name }</li>
 		</c:forEach>       
        </c:forEach>
        
@@ -28,7 +28,5 @@
         </c:forEach>-->
      </c:forEach>
     </ul>
-    
-	</form>
 </body>
 </html>

@@ -65,22 +65,22 @@ public class BeerMeController
     {    
     	ModelAndView mav = new ModelAndView("results");
     	//Testing using a map.
-    	List<Brewery> beersByBrewery = null;
+    	List<Beer> beersByBrewery = null;
     	//List<Beer> beerId = null;
     	String breweryIdContainer = "";
-    	List <String> breweryIdList = new ArrayList<>();
+    	
     	List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
-    	Map<String, List<Brewery>> test = new HashMap<String, List<Brewery>>();
+    	Map<String, List<Beer>> test = new HashMap<>();
     		for(int i = 0; i< breweries.size(); i++) {
-    			breweryIdList.add(breweries.get(i).getBreweryIdString());
+    		    Brewery brewery = breweries.get(i);
     			breweryIdContainer = breweries.get(i).getBreweryIdString();
-    			beersByBrewery = beerApiService.findBeersByBreweries(breweryIdList.get(i));
+    			beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
 //    			beerId.add(beerApiService.findBeerById(beersByBrewery.get(i).getId()));
 //    				for(int j = 0; j<beerId.size(); j++) {
 //    	    		
 //    				}
     			
-    			
+    		System.out.println("Brewery ID String: " + brewery.getBreweryIdString());	
     		test.put(breweryIdContainer, beersByBrewery);
     		}
     	
@@ -94,9 +94,9 @@ public class BeerMeController
 //        
      //   List<Brewery> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdList.get(0));
     	mav.addObject("mapOfBeerBrew",test);
-        mav.addObject("breweryIdList",breweryIdList);
+   //     mav.addObject("breweryIdList",breweryIdList);
         mav.addObject("brewery", breweries);
-        mav.addObject("beersByBrewery",beersByBrewery);
+   //     mav.addObject("beersByBrewery",beersByBrewery);
         
     	return mav;
     }
@@ -141,8 +141,8 @@ public class BeerMeController
 	public ModelAndView details2(@PathVariable("breweryIdString")  String breweryIdString) {
 		ModelAndView mav = new ModelAndView("details");
 		List<Beer> beers = beerApiService.findBeers();
-		List<Brewery> breweries = beerApiService.findBeersByBreweries(breweryIdString);
-		List<Brewery> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
+		List<Beer> breweries = beerApiService.findBeersByBreweries(breweryIdString);
+		List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
 		
 		mav.addObject("beers", beers);
 		mav.addObject("breweries",breweries);

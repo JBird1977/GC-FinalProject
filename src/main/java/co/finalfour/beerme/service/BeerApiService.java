@@ -24,7 +24,7 @@ import co.finalfour.beerme.model.Mood;
 @Component
 public class BeerApiService {
 
-	@Value("${beer.key}")
+	@Value("${freebeer.key}")
 	private String key;
 
 	private RestTemplate restTemplate = new RestTemplate();
@@ -90,17 +90,16 @@ public class BeerApiService {
 		return response.getData();
 	}
 	//To search beers at a particular brewery.
-	public List<Brewery> findBeersByBreweries(String breweryIdString){
-		
-			
-		
-		
+	public List<Beer> findBeersByBreweries(String breweryIdString){
+
 												//Sample: http://api.brewerydb.com/v2/brewery/BznahA/beers?key=b2599794d8cfacff731e8ed3493f43bd
 		String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/brewery/"+breweryIdString+"/beers?key="+key)
 				.toUriString();
 		System.out.println(url);
-		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);
-		return response.getData();
+		BeerResponse response = restTemplate.getForObject(url, BeerResponse.class );
+        return response.getData();
+//		BreweryResponse response = restTemplate.getForObject(url, BreweryResponse.class);
+//		return response.getData();
 		
 	}
 	//To search beers by abv

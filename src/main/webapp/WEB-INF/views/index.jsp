@@ -31,7 +31,6 @@ Style <select>
 <p>State <input type="text" name="region"/></p>
 
 <button type ="submit" class="btn btn-link">Beer Me!</button>
-</p>
 </form>
 </body>
 </html>
