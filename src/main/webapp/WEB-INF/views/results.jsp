@@ -11,7 +11,8 @@
 <body>
 <p>Based on your mood and location: </p>
  <h5>${beerStyles}</h5>
- <h5>${moods}</h5>   
+ <h5>${moods}</h5> 
+  
    
    
     
@@ -19,9 +20,12 @@
        <ol><li><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
        </ol>
        <c:forEach var="entry" items="${mapOfBeerBrew }">
-       <c:forEach var = "info" items="${entry.value}">
-       <li>${info.name } ${info.style.category.name }</li>
-		</c:forEach>       
+             <c:forEach var = "info" items="${entry.value}">
+             
+                <c:if test = "${beerStyles == info.style.category.name}">
+                  <li>${info.name} ${info.abv}</li>
+                </c:if>
+		     </c:forEach>       
        </c:forEach>
        
        <!--   <c:forEach var="beers" items="${ beersByBrewery }">

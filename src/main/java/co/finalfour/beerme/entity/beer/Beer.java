@@ -26,7 +26,7 @@ public class Beer {
    	private String id;
 	@Column(name="objBeerName")
    	private String name;
-   	private String abv;
+   	private Double abv;
 	private String ibu;
    	@Column(name="objBeerDescription") @Type(type="text")
    	private String description;
@@ -98,12 +98,17 @@ public class Beer {
 		this.name = name;
 	}
 
-	public String getAbv() {
+	public Double getAbv() {
 		return abv;
 	}
 
-	public void setAbv(String abv) {
-		this.abv = abv;
+//	public void setAbv(String abvString) {
+//	    
+//	    this.abv = Float.parseFloat(abvString);
+//	}
+	public void setAbv(Double abv) {
+		
+	    this.abv = abv;
 	}
 
 	public String getIbu() {
