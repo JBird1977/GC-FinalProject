@@ -27,7 +27,7 @@ public class Beer {
 	@Column(name="objBeerName")
    	private String name;
    	private Double abv;
-	private String ibu;
+	private Double ibu;
    	@Column(name="objBeerDescription") @Type(type="text")
    	private String description;
 	private String foodPairings;
@@ -111,11 +111,11 @@ public class Beer {
 	    this.abv = abv;
 	}
 
-	public String getIbu() {
+	public Double getIbu() {
 		return ibu;
 	}
 
-	public void setIbu(String ibu) {
+	public void setIbu(Double ibu) {
 		this.ibu = ibu;
 	}
 
