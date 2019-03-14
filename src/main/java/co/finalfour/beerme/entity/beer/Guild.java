@@ -22,7 +22,7 @@ public class Guild {
     private String statusDisplay;
 //    private String createDate;
 //    private String updateDate;
-    private char isCertifiedCraftBrewer;
+    private String isCertifiedCraftBrewer = "NA";
     
    	//private Images images;
     
@@ -106,11 +106,11 @@ public class Guild {
 //		this.updateDate = updateDate;
 //	}
 
-	public char getIsCertifiedCraftBrewer() {
+	public String getIsCertifiedCraftBrewer() {
 		return isCertifiedCraftBrewer;
 	}
 
-	public void setIsCertifiedCraftBrewer(char isCertifiedCraftBrewer) {
+	public void setIsCertifiedCraftBrewer(String isCertifiedCraftBrewer) {
 		this.isCertifiedCraftBrewer = isCertifiedCraftBrewer;		
 	}
 

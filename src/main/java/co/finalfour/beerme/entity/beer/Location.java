@@ -19,11 +19,11 @@ public class Location{
    	@Column(name="objLocationsId")
    	private String id;
    	@Column(name="objLocationsInPlanning")
-   	private String inPlanning;
+   	private char inPlanning;
    	@Column(name="objLocationsIsClosed")
-   	private String isClosed;
+   	private char isClosed;
    	@Column(name="objLocationsIsPrimary")
-   	private String isPrimary;
+   	private char isPrimary;
    	@Column(name="objLocationsLatitude")
    	private Double latitude;
    	@Column(name="objLocationsLocality")
@@ -37,7 +37,7 @@ public class Location{
    	@Column(name="objLocationsName")
    	private String name;
    	@Column(name="objLocationsOpenToPublic")
-   	private String openToPublic;
+   	private char openToPublic;
    	@Column(name="objLocationsPostalCode")
    	private String postalCode;
    	@Column(name="objLocationsRegion")
@@ -85,27 +85,27 @@ public class Location{
 		this.id = id;
 	}
  	
- 	public String getInPlanning(){
+ 	public char getInPlanning(){
 		return this.inPlanning;
 	}
 	
- 	public void setInPlanning(String inPlanning){
+ 	public void setInPlanning(char inPlanning){
 		this.inPlanning = inPlanning;
 	}
  	
- 	public String getIsClosed(){
+ 	public char getIsClosed(){
 		return this.isClosed;
 	}
 	
- 	public void setIsClosed(String isClosed){
+ 	public void setIsClosed(char isClosed){
 		this.isClosed = isClosed;
 	}
  	
- 	public String getIsPrimary(){
+ 	public char getIsPrimary(){
 		return this.isPrimary;
 	}
 	
- 	public void setIsPrimary(String isPrimary){
+ 	public void setIsPrimary(char isPrimary){
 		this.isPrimary = isPrimary;
 	}
  	
@@ -157,11 +157,11 @@ public class Location{
 		this.name = name;
 	}
  	
- 	public String getOpenToPublic(){
+ 	public char getOpenToPublic(){
 		return this.openToPublic;
 	}
 	
- 	public void setOpenToPublic(String openToPublic){
+ 	public void setOpenToPublic(char openToPublic){
 		this.openToPublic = openToPublic;
 	}
  	
@@ -223,13 +223,13 @@ public class Location{
 	
 	@Override
 	public String toString() {
-		return "Locations [country=" + country + ", countryIsoCode=" + countryIsoCode + ", createDate=" + createDate
-				+ ", id=" + id + ", inPlanning=" + inPlanning + ", isClosed=" + isClosed + ", isPrimary=" + isPrimary
-				+ ", latitude=" + latitude + ", locality=" + locality + ", locationType=" + locationType
-				+ ", locationTypeDisplay=" + locationTypeDisplay + ", longitude=" + longitude + ", name=" + name
-				+ ", openToPublic=" + openToPublic + ", postalCode=" + postalCode + ", region=" + region + ", status="
-				+ status + ", statusDisplay=" + statusDisplay + ", updateDate=" + updateDate + ", website=" + website
-				+ ", yearOpened=" + yearOpened + "]";
+		return  name + (yearOpened == null ? "": " - Established " + yearOpened) + " : "
+				+ locality + ", " + region + " " + postalCode + " " + country.getDisplayName()
+				+ (inPlanning == 'Y' ? "Coming Soon! ": " ") + (isClosed == 'Y' ? "Sorry, this location is closed. ": " ")
+				+ (isPrimary == 'Y' ? "Primary Location ": " ")
+				+ locationTypeDisplay
+				+ (openToPublic == 'Y' ? " Open to the public. ": " ");
+
 	}
 	
 }
