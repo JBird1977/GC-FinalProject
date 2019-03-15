@@ -107,7 +107,7 @@ public class BeerMeController
 		moods.add("Happy");
 		moods.add("Punchy");
 		moods.add("Notebook Sad");
-		moods.add("Pepe Le Pew Social");	
+		moods.add("Social Butterfly");	
 		return moods;
 	}
 	
