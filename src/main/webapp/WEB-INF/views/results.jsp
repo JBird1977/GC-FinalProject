@@ -17,7 +17,7 @@
 
 	<c:forEach var="brewery" items="${ brewery }">
 		<ol>
-			<li><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
+			<li><a href="/details/${brewery.breweryIdString }?moods=${moods}&beerStyles${beerStyles}&${test}">${ brewery.name }</a></li>
 		</ol>
 		<c:forEach var="entry" items="${mapOfBeerBrew }">
 			<c:forEach var="info" items="${entry.value}">
