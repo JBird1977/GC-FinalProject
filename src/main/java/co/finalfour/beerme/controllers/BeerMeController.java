@@ -68,6 +68,10 @@ public class BeerMeController
         String breweryIdContainer = "";
         System.out.println(beerStyles);
         List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
+        
+   
+        
+        
         Map<String, List<Beer>> test = new HashMap<>();
         for (int i = 0; i < breweries.size(); i++)
         {
@@ -97,8 +101,8 @@ public class BeerMeController
     {
         List<String> moods = new ArrayList<>();
         moods.add("Happy");
-        moods.add("Punchy");
-        moods.add("Notebook Sad");
+        moods.add("Awestruck");
+        moods.add("Stoic");
         moods.add("Social Butterfly");
         return moods;
     }

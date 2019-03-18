@@ -31,17 +31,17 @@
 						</c:if>
 					</c:if>
 				</c:if>
-				<!-- ///NOTEBOOK SAD\\\ -->
+				<!-- ///STOIC Formerly NOTEBOOK SAD\\\ -->
 				<c:if test="${beerStyles == info.style.category.name}">
-					<c:if test="${moods == 'Notebook Sad'}">
+					<c:if test="${moods == 'Stoic'}">
 						<c:if test="${info.ibu > 55 }">
 							<li>${info.name}</li>
 						</c:if>
 					</c:if>
 				</c:if>
-				                <!-- ///PUNCHY -->
+				                <!-- ///Awestruck Formerly PUNCHY\\\ -->
 				        <c:if test="${beerStyles == info.style.category.name}">
-                    <c:if test="${moods == 'Punchy'}">
+                    <c:if test="${moods == 'Awestruck'}">
                         <c:if test="${info.ibu < 55 && info.abv < 6}">
                             <li>${info.name}</li>
                         </c:if>
