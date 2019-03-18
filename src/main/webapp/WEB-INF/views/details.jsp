@@ -15,55 +15,24 @@
 	<h5>${moods}</h5>
 
 
-
-	<c:forEach var="brewery" items="${ brewery }">
-		<ol>
-			<li><a href="/details/${brewery.breweryIdString }">${ brewery.name }</a></li>
-		</ol>
-		<c:forEach var="entry" items="${mapOfBeerBrew }">
-			<c:forEach var="info" items="${entry.value}">
-
-				<!-- ///HAPPY\\\ -->
-				<c:if test="${beerStyles == info.style.category.name}">
-					<c:if test="${moods == 'Happy'}">
-						<c:if test="${info.abv > 8 }">
-							<li>${info.name}</li>
-						</c:if>
-					</c:if>
-				</c:if>
-				<!-- ///NOTEBOOK SAD\\\ -->
-				<c:if test="${beerStyles == info.style.category.name}">
-					<c:if test="${moods == 'Notebook Sad'}">
-						<c:if test="${info.ibu > 55 }">
-							<li>${info.name}</li>
-						</c:if>
-					</c:if>
-				</c:if>
-				                <!-- ///PUNCHY -->
-				        <c:if test="${beerStyles == info.style.category.name}">
-                    <c:if test="${moods == 'Punchy'}">
-                        <c:if test="${info.ibu < 55 && info.abv < 6}">
-                            <li>${info.name}</li>
-                        </c:if>
-                    </c:if>
-                </c:if>
-                
-                            <!-- SOCIAL BUTTERFLY -->
-                  <c:if test="${beerStyles == info.style.category.name}">
-                    <c:if test="${moods == 'Social Butterfly'}">
-                        <c:if test="${info.ibu < 30 && info.abv > 8}">
-                            <li>${info.name}</li>
-                        </c:if>
-                    </c:if>
-                </c:if>
-			</c:forEach>
-		</c:forEach>
-
-	
-	</c:forEach>
-<br>
 <h5>Details</h5>
 
+<h3>Recommended Beers</h3>
+ <ul>
+     <c:forEach var="beer" items="${ recommendedBeers }">
+
+        <li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name } <br>
+            <c:choose>
+                <c:when test="${ not empty beer.rating }">
+                    ${ beer.rating }
+                </c:when>
+            </c:choose>
+        </li><br>
+            
+     </c:forEach>
+    </ul>
+
+<h3>All Beers</h3>
  <ul>
      <c:forEach var="beer" items="${ beersByBrewery }">
 
