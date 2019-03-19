@@ -52,6 +52,7 @@ public class BeerMeController
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("moods", getMoods());
         mav.addObject("beerStyles", getBeerStyle());
+        mav.addObject("styleName", getStyleName());
         return mav;
 
     }
@@ -60,7 +61,8 @@ public class BeerMeController
     public ModelAndView results(@RequestParam(value = "zip", required = false) String zip,
             @RequestParam(value = "locality", required = false) String locality,
             @RequestParam(value = "region", required = false) String region,
-            @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods)
+            @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods,
+            @ModelAttribute("styleName") String styleName)
 
     {
         ModelAndView mav = new ModelAndView("results");
@@ -120,6 +122,21 @@ public class BeerMeController
         beerStyles.add("Hybrid/mixed Beer");
         return beerStyles;
     }
+    
+    public List<String> getStyleName()
+    {
+    	List<String> styleName = new ArrayList<>();
+    	styleName.add("Lager");
+    	styleName.add("IPA");
+    	styleName.add("Pilsner");
+    	styleName.add("Pale Ale");
+    	styleName.add("Stout");
+    	styleName.add("Brown Ale");
+    	styleName.add("Red Ale");
+    	styleName.add("Mead");
+    	return styleName;
+    	
+    }
 
     // @RequestMapping("/details/{name}")
     // public ModelAndView details(@PathVariable("name") String name) {
@@ -139,7 +156,8 @@ public class BeerMeController
             @RequestParam(value = "zip", required = false) String zip,
             @RequestParam(value = "locality", required = false) String locality,
             @RequestParam(value = "region", required = false) String region,
-            @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods)
+            @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods,
+            @ModelAttribute("styleNames") String styleNames)
 
     {
         ModelAndView mav = new ModelAndView("details");
