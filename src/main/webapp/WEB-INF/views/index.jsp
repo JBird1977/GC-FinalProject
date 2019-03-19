@@ -10,6 +10,7 @@
 <title>Beer Me</title>
 </head>
 <body id="body">
+<%@include file="partials/header.jsp"%>
 Test of body class css.
 <p id ="p-preform"> Test of paragraph css </p>
 <h1>test h1</h1>
