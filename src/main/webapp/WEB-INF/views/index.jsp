@@ -6,11 +6,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" >
+<link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
 <title>Beer Me</title>
 </head>
-<body>
+<body id="body">
+Test of body class css.
+<p id ="p-preform"> Test of paragraph css </p>
+<h1>test h1</h1>
+<h3>test h3</h3>
+I AM IN GREAT PAIN
+<a href = "/favorites"> Go to Favorites</a>
+
+<div class = "center-div">
 <form action = "/results" method=post>
+
 
 <p> 
 Mood <select name="moods">
@@ -38,7 +47,9 @@ Simpler Style<select name="styleNames">
 <p>City <input type="text" name="locality"/></p>
 <p>State <input type="text" name="region"/></p>
 
-<button type ="submit" class="btn btn-link">Beer Me!</button>
+<button id = "btn-primary" type ="submit" class="btn btn-primary">Beer Me!</button>
+
 </form>
+</div>
 </body>
 </html>
