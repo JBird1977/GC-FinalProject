@@ -9,7 +9,6 @@
 <title>Details</title>
 </head>
 <body>
-<p>This is the details page! :) </p>
 
 <p>Based on your mood and location:</p>
 	<h5>${beerStyles}</h5>
@@ -22,7 +21,7 @@
  <ul>
      <c:forEach var="beer" items="${ recommendedBeers }">
 
-        <li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name } <br>
+        <li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name }<br>
             <c:choose>
                 <c:when test="${ not empty beer.rating }">
                     ${ beer.rating }

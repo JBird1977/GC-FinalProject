@@ -1,6 +1,7 @@
 package co.finalfour.beerme.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,9 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
+import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
+import co.finalfour.beerme.entity.beer.BeersByLowAbvComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.Ingredient;
-import co.finalfour.beerme.model.Mood;
 import co.finalfour.beerme.service.BeerApiService;
 
 @Controller
@@ -68,10 +70,7 @@ public class BeerMeController
         String breweryIdContainer = "";
         System.out.println(beerStyles);
         List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
-        
-   
-        
-        
+
         Map<String, List<Beer>> test = new HashMap<>();
         for (int i = 0; i < breweries.size(); i++)
         {
@@ -150,6 +149,8 @@ public class BeerMeController
         // locality, region);
         List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
         List<Beer> recommendedBeers = new ArrayList<>();
+        List<Double> recommendedBeersAbv = new ArrayList<>();
+        List<Double> recommendedBeersIbu = new ArrayList<>();
 
         for (Beer beer : beersByBrewery)
         {
@@ -159,34 +160,45 @@ public class BeerMeController
             {
                 continue;
             }
-            
-            
+            //Test for mood condition and populate recommended beer list
             if (beer.getStyle().getCategory().getName().equals(beerStyles))
             {
-                
+
                 if ("Happy".equals(moods) && beer.getAbv() != null && beer.getAbv() > 8)
                 {
-                    recommendedBeers.add(beer);
+                    recommendedBeers.add(beer);                   
                 }
-                if ("Punchy".equals(moods) && beer.getIbu() != null && beer.getIbu() < 55 && beer.getAbv() < 6)
+                if ("Awestruck".equals(moods) && beer.getIbu() != null && beer.getIbu() < 55 && beer.getAbv() < 6)
                 {
                     recommendedBeers.add(beer);
                 }
-                
-                if ("Notebook Sad".equals(moods) && beer.getIbu() != null && beer.getIbu() > 55)
+
+                if ("Stoic".equals(moods) && beer.getIbu() != null && beer.getIbu() > 55)
                 {
                     recommendedBeers.add(beer);
                 }
-                
-                if ("Social Butterfly".equals(moods) && beer.getAbv() != null && beer.getIbu() != null && beer.getIbu() < 30 && beer.getAbv() > 8)
+
+                if ("Social Butterfly".equals(moods) && beer.getAbv() != null && beer.getIbu() != null
+                        && beer.getIbu() < 30 && beer.getAbv() > 8)
                 {
                     recommendedBeers.add(beer);
                 }
-                
-            } 
-           
+
+            }
 
         }
+        //with recommended beer list populated, sort beers based on mood
+        if ("Happy".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        if ("Stoic".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        
+
+
         // List<Beer> beerId = null;
         // String breweryIdContainer = "";
         // Map<String, List<Beer>> beerMap = new HashMap<>();
