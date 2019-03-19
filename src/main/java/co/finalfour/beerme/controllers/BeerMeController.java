@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
+import co.finalfour.beerme.entity.beer.BeersByLowAbvAndLowIbuComparator;
 import co.finalfour.beerme.entity.beer.BeersByLowAbvComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.Ingredient;
@@ -77,7 +78,15 @@ public class BeerMeController
             Brewery brewery = breweries.get(i);
             breweryIdContainer = breweries.get(i).getBreweryIdString();
             beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
-            System.out.println("Brewery ID String: " + brewery.getBreweryIdString());
+            System.out.println(i);
+            int count = 1;
+            for(Beer beer : beersByBrewery) {
+                    System.out.println(count);
+                    System.out.println(beer.getName());
+                    count++;
+                }
+            
+            System.out.println("Brewery Name: " + brewery.getName());
             test.put(breweryIdContainer, beersByBrewery);
         }
 
@@ -148,11 +157,57 @@ public class BeerMeController
         // List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip,
         // locality, region);
         List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
-        List<Beer> recommendedBeers = new ArrayList<>();
+        List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
         List<Double> recommendedBeersAbv = new ArrayList<>();
         List<Double> recommendedBeersIbu = new ArrayList<>();
 
-        for (Beer beer : beersByBrewery)
+        
+        //with recommended beer list populated, sort beers based on mood
+        if ("Happy".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        if ("Stoic".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        
+        if ("Awestruck".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByLowAbvAndLowIbuComparator());
+        }
+        
+
+
+        // List<Beer> beerId = null;
+        // String breweryIdContainer = "";
+        // Map<String, List<Beer>> beerMap = new HashMap<>();
+        // for (int i = 0; i < breweries.size(); i++) {
+        // Brewery brewery = breweries.get(i);
+        // breweryIdContainer = breweries.get(i).getBreweryIdString();
+        // beersByBrewery =
+        // beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
+        // //System.out.println("Brewery ID String: " + brewery.getBreweryIdString());
+        // test.put(breweryIdContainer, beersByBrewery);
+        // }
+        // mav.addObject("beerMap", beerMap);
+        // mav.addObject("beers", beers);
+        // mav.addObject("breweries", beers2);
+        mav.addObject("recommendedBeers", recommendedBeers);
+        mav.addObject("beersByBrewery", beersByBrewery);
+        return mav;
+
+    }
+    // @RequestMapping("/searchStyle")
+    // public ModelAndView searchStyle(@RequestParam("styleSearch") String
+    // styleSearch) {
+    // List<Style> styles = searchApiService.randomStyle(styleSearch);
+    // return new ModelAndView("searchResults", "styles", styles);
+    // }
+    
+    private List<Beer> filterBeers(List<Beer> all, String moods, String beerStyles) {
+        List<Beer> recommendedBeers = new ArrayList<>();
+        for (Beer beer : all)
         {
             System.out.println(beer.getName());
             if (beer.getStyle() == null || beer.getStyle().getCategory() == null
@@ -187,41 +242,6 @@ public class BeerMeController
             }
 
         }
-        //with recommended beer list populated, sort beers based on mood
-        if ("Happy".equals(moods))
-        {
-            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
-        }
-        if ("Stoic".equals(moods))
-        {
-            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
-        }
-        
-
-
-        // List<Beer> beerId = null;
-        // String breweryIdContainer = "";
-        // Map<String, List<Beer>> beerMap = new HashMap<>();
-        // for (int i = 0; i < breweries.size(); i++) {
-        // Brewery brewery = breweries.get(i);
-        // breweryIdContainer = breweries.get(i).getBreweryIdString();
-        // beersByBrewery =
-        // beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
-        // //System.out.println("Brewery ID String: " + brewery.getBreweryIdString());
-        // test.put(breweryIdContainer, beersByBrewery);
-        // }
-        // mav.addObject("beerMap", beerMap);
-        // mav.addObject("beers", beers);
-        // mav.addObject("breweries", beers2);
-        mav.addObject("recommendedBeers", recommendedBeers);
-        mav.addObject("beersByBrewery", beersByBrewery);
-        return mav;
-
+        return recommendedBeers;
     }
-    // @RequestMapping("/searchStyle")
-    // public ModelAndView searchStyle(@RequestParam("styleSearch") String
-    // styleSearch) {
-    // List<Style> styles = searchApiService.randomStyle(styleSearch);
-    // return new ModelAndView("searchResults", "styles", styles);
-    // }
-}
+} 
