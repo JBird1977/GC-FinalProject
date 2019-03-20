@@ -1,5 +1,6 @@
 package co.finalfour.beerme.entity.beer;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Type;
 
@@ -21,7 +23,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Brewery {
-	
+	@Transient
+    private String locationType;
+    public String getLocationType() {
+        return locationType;
+    }
+
+    public void setLocationType(String locationType) {
+        this.locationType = locationType;
+    }
     @JsonIgnore
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -34,14 +44,7 @@ public class Brewery {
    	@Column(name="objBreweryDescription") @Type(type="text")
    	private String description;	
    	private String createDate;
-   	private String locationType;
-   	public String getLocationType() {
-		return locationType;
-	}
-
-	public void setLocationType(String locationType) {
-		this.locationType = locationType;
-	}
+ 
 
 	@ElementCollection 
    	private List<Location> locations;  

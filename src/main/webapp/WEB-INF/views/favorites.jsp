@@ -5,10 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" >
+
 <title>Favorite Beers</title>
 </head>
-<body id="bodyBackgroundFav">
+<body id="bodyBackgroudBeer">
 <%@include file="partials/header.jsp"%>
 <div class = "parent-div">
 <div>

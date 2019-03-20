@@ -28,10 +28,7 @@ public class BreweryComparator implements Comparator<Brewery>
         {
             totalB= beerMap.get(b.getBreweryIdString()).size();
         }
-          System.out.println("Total A = " + totalA);
-          System.out.println("Total B = " + totalB);
-            
-           
+        
         if (totalA > totalB)
         {
             return -1;

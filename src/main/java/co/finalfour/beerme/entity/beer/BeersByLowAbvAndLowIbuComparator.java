@@ -13,9 +13,7 @@ public class BeersByLowAbvAndLowIbuComparator implements Comparator<Beer>
         
         //Awestruck is the lesser average of IBU and ABV
         comboA = ( (a.getAbv() * a.getIbu()) / 2 );
-        System.out.println("Combo A: " + comboA);
         comboB = ( (b.getAbv() * b.getIbu()) / 2 );
-        System.out.println("Combo B: " + comboB);
         
         if (comboA < comboB)
         {

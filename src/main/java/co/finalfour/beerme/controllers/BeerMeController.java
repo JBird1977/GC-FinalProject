@@ -101,11 +101,7 @@ public class BeerMeController
             List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
             beerMap.put(breweryIdContainer, recommendedBeers);
             }
-        //    System.out.println(i+brewery.getLocationType());
         }
-        
-        System.out.println("Brewery: " + breweries2);
-        System.out.println(beerMap.size());
             breweries2.sort(new BreweryComparator(beerMap));  
         
         

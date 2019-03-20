@@ -14,11 +14,6 @@ public class BeersByHighAbvAndLowIbuComparator implements Comparator<Beer>
         //We use the equation below to generate a score
         //the higher the score the better the fit for the mood and the higher
         //it places in the list of recommendations
-        comboA = ((a.getAbv() - (a.getIbu()) / 3));
-        System.out.println("Combo A: " + comboA);
-        comboB = ((b.getAbv() - (b.getIbu()) / 3 ));
-        System.out.println("Combo B: " + comboB);
-        
         if (comboA < comboB)
         {
             return 1;
