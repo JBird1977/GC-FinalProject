@@ -83,6 +83,13 @@ html {
 	alight-items: center;
 	}
 	
+#bodyBackgroudBeer{
+	 position: relative;
+	 background-image: url(/images/beerMug.png);
+	 background-repeat: no-repeat;
+ 	 background-position: center right;
+}
+	
 #bodyBackgroundFav {
 	
 	position: relative;

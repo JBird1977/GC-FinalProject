@@ -9,7 +9,8 @@
 <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" >
 <title>Results</title>
 </head>
-<body>
+<body id="bodyBackgroudBeer">
+<%@include file="partials/header.jsp"%>
 	<p>Based on your mood and location:</p>
 <!-- 	<h5>${beerStyles}</h5>
 	<h5>${moods}</h5>
