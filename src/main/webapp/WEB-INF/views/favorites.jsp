@@ -5,10 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" >
+<link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
 <title>Favorite Beers</title>
 </head>
-<body>
+<body id="bodyBackground">
+<%@include file="partials/header.jsp"%>
+
 <div>
 	<c:choose>
 		<c:when test="${ not empty action }">

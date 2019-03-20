@@ -10,21 +10,30 @@
 	 background-color: white;
 	border-style: solid;
 }
- 
- 
+
 .button {
-  font: bold 11px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
+    background: -webkit-linear-gradient(top, #7d7e7d 0%,#0e0e0e 100%);
+    padding: 8px 20px;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:5px;
+    cursor:pointer;
+    
   /* Make link look like button */
 }
+
+.child-div{
+	left: 582px;
+	position: absolute;
+}
+
+
+ .parent-div{
  
+  top: 90px;
+  left: 600px;
+  position: absolute;
+ }
 .center-div{
 	
 	
@@ -32,7 +41,7 @@
 	width: 230px;
 	height: 300px;
 	
-	position: adsolute;
+	position: relative;
 
 	align-items: center;
 	
@@ -67,20 +76,23 @@ html {
 	
 	position: relative;
 	background-image: url(/images/beerSuds.jpg);
-	
-
 	background-repeat: no-repeat;
 	background-size: cover;
-  font-family: 'Source Sans Pro';
-  text-align:'center';
-  alight-items: center;
-  
-}
-#p-preform {
-	color:red;
-	text-align:'center';
 	font-family: 'Source Sans Pro';
-}
+	text-align: 'center';
+	alight-items: center;
+	}
+	
+#p-preform {
+	color: red;
+	
+	color : #FFFFFF; 
+	background : #b8b8b8;
+	text-align: 'center';
+	font-family: 'Source Sans Pro';
+	background: #b8b8b8;
+	color: #FFFFFF;	
+	background: #b8b8b8;}
 
 .btn-xl {
   padding: 1.25rem 2.5rem;
