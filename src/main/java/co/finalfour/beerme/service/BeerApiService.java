@@ -69,11 +69,18 @@ public class BeerApiService {
 				String queryValue = "";
 				int postalInt = 0;
 				
-				if (postalCode != "") {
+				if (postalCode != "") 
+				{
+				    System.out.println("Inside if for zip");
 				    postalInt = Integer.parseInt(postalCode);
 					queryKey = "postalCode";
 					queryValue = postalCode;
-				} else if (locality != "") {
+					if (!(postalInt >= 10000 && postalInt <= 99999 ))
+	                {
+	                    return null;
+	                }
+				} 
+				else if (locality != "") {
 					queryKey = "locality";
 					queryValue = locality;
 				} else if (region != "") {
@@ -86,10 +93,7 @@ public class BeerApiService {
 				    return null;
 				}
 				
-				if (!(postalInt >= 10000 && postalInt <= 99999 ))
-				{
-				    return null;
-				}
+				
 				
 				
 				String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")	

@@ -95,18 +95,19 @@ public class BeerMeController
         for (int i = 0; i < breweries.size(); i++)
         {
             Brewery brewery = breweries.get(i);
-            breweryIdContainer = breweries.get(i).getBreweryIdString();
-            
+            breweryIdContainer = breweries.get(i).getBreweryIdString();           
             if(brewery.getLocationType().toLowerCase().contains("micro")) {
-            System.out.println("HI!!!!!!!!!!");
             beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());          
             List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
             beerMap.put(breweryIdContainer, recommendedBeers);
             }
-            System.out.println(i+brewery.getLocationType());
+        //    System.out.println(i+brewery.getLocationType());
         }
         
-        breweries.sort(new BreweryComparator(beerMap));
+        System.out.println("Brewery: " + breweries2);
+        System.out.println(beerMap.size());
+            breweries2.sort(new BreweryComparator(beerMap));  
+        
         
         mav.addObject("mapOfBeerBrew", beerMap);
         mav.addObject("breweries", breweries2);
@@ -178,7 +179,6 @@ public class BeerMeController
         List<Beer> recommendedBeers = new ArrayList<>();
         for (Beer beer : all)
         {
-            System.out.println(beer.getName());
             if (beer.getStyle() == null || beer.getStyle().getCategory() == null
                     || beer.getStyle().getCategory().getName() == null)
             {

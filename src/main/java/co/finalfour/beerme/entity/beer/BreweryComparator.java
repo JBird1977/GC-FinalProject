@@ -19,22 +19,27 @@ public class BreweryComparator implements Comparator<Brewery>
     {
         int totalA = 0;
         int totalB = 0;
-       totalA= beerMap.get(a.getBreweryIdString()).size();
-       totalB= beerMap.get(b.getBreweryIdString()).size();
-        
-       if (totalA > totalB)
-       {
-           return -1;
-       }
-       if (totalB > totalA)
-       {
-           return 1;
-       }
-       else 
-       {
-        return 0;
-       }
        
+        if (beerMap.get(a.getBreweryIdString()) != null)
+        {
+            totalA= beerMap.get(a.getBreweryIdString()).size();
+        }
+        if ((beerMap.get(b.getBreweryIdString()) != null))
+        {
+            totalB= beerMap.get(b.getBreweryIdString()).size();
+        }
+          System.out.println("Total A = " + totalA);
+          System.out.println("Total B = " + totalB);
+            
+           
+        if (totalA > totalB)
+        {
+            return -1;
+        }
+        if (totalB > totalA)
+        {
+            return 1;
+        }                    
+        return 0;    
     }
-
 }
