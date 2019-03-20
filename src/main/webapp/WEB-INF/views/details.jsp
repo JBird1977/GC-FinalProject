@@ -13,15 +13,24 @@
 <p>Based on your mood and location:</p>
 	<h5>${beerStyles}</h5>
 	<h5>${moods}</h5>
+	
+<!--   <h5>${beerStyles}</h5>
+    <h5>${moods}</h5>
+<p> Happy = ABV > 8        </p>
+<p>  Awestruck = IBU < 55 and ABV < 6</p>
+<p>  Stoic =    IBU > 55</p>
+<p>  Social Butterfly =  IBU < 30 and ABV >8      </p>
+<p></p>
+-->
 
 
 <h5>Details</h5>
 
 <h3>Recommended Beers</h3>
- <ul>
+ <ul style="list-style: none;">
      <c:forEach var="beer" items="${ recommendedBeers }">
 
-        <li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name }<br>
+        <li><a href="/beer/${ beer.id }/add">Add to Favorites</a> ${ beer.name }<br>
             <c:choose>
                 <c:when test="${ not empty beer.rating }">
                     ${ beer.rating }
@@ -33,10 +42,10 @@
     </ul>
 
 <h3>All Beers</h3>
- <ul>
+ <ul style="list-style: none;">
      <c:forEach var="beer" items="${ beersByBrewery }">
 
-     	<li><a href="/beer/${ beer.id }/add">Fav Flave</a> ${ beer.name } <br>
+     	<li><a href="/beer/${ beer.id }/add">Add to Favorites</a> ${ beer.name } <br>
 			<c:choose>
 				<c:when test="${ not empty beer.rating }">
 					${ beer.rating }

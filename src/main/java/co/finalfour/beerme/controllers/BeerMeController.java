@@ -35,7 +35,6 @@ public class BeerMeController
 
     @RequestMapping("/test")
     public ModelAndView test()
-
     {
         ModelAndView mav = new ModelAndView("test");
         List<Brewery> breweries = beerApiService.findBreweries();
@@ -55,7 +54,6 @@ public class BeerMeController
         mav.addObject("beerStyles", getBeerStyle());
         mav.addObject("styleName", getStyleName());
         return mav;
-
     }
 
     @PostMapping("/results")
@@ -67,43 +65,25 @@ public class BeerMeController
 
     {
         ModelAndView mav = new ModelAndView("results");
-        // Testing using a map.
         List<Beer> beersByBrewery = null;
-        // List<Beer> beerId = null;
         String breweryIdContainer = "";
-        System.out.println(beerStyles);
         List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
-
-        Map<String, List<Beer>> test = new HashMap<>();
+        if (breweries == null)
+        {
+            return new ModelAndView("redirect:/");
+        }
+        Map<String, List<Beer>> beerMap = new HashMap<>();       
         for (int i = 0; i < breweries.size(); i++)
         {
             Brewery brewery = breweries.get(i);
             breweryIdContainer = breweries.get(i).getBreweryIdString();
-            beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
-            System.out.println(i);
-            int count = 1;
-            for(Beer beer : beersByBrewery) {
-                    System.out.println(count);
-                    System.out.println(beer.getName());
-                    count++;
-                }
-            
-            System.out.println("Brewery Name: " + brewery.getName());
-            test.put(breweryIdContainer, beersByBrewery);
+            System.out.println(breweryIdContainer);
+            beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());          
+            List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
+            beerMap.put(breweryIdContainer, recommendedBeers);
         }
-
-        // for(int i = 0; i < breweries.size(); i++) {
-        // breweryIdList.add(breweries.get(i).getBreweryIdString());
-        //
-        // }
-        //
-        // List<Brewery> beersByBrewery =
-        // beerApiService.findBeersByBreweries(breweryIdList.get(0));
-        mav.addObject("mapOfBeerBrew", test);
-        // mav.addObject("breweryIdList",breweryIdList);
-        mav.addObject("brewery", breweries);
-        // mav.addObject("beersByBrewery",beersByBrewery);
-
+        mav.addObject("mapOfBeerBrew", beerMap);
+        mav.addObject("breweries", breweries);
         return mav;
     }
 
@@ -143,85 +123,29 @@ public class BeerMeController
     	styleName.add("Brown Ale");
     	styleName.add("Red Ale");
     	styleName.add("Mead");
-    	return styleName;
-    	
+    	return styleName;   	
     }
-
-    // @RequestMapping("/details/{name}")
-    // public ModelAndView details(@PathVariable("name") String name) {
-    // ModelAndView mav = new ModelAndView("details");
-    // List<Beer> beers = beerApiService.findBeers();
-    // List<Brewery> breweries = beerApiService.findBreweries();
-    // mav.addObject("beers", beers);
-    // mav.addObject("breweries",breweries);
-    // return mav;
-
-    // }
+    
     @RequestMapping("/details/{breweryIdString}")
-    // public ModelAndView details2(@PathVariable("name") String name,
-    // @RequestParam(value="breweryIdString", required=false) String
-    // breweryIdString)
     public ModelAndView details2(@PathVariable("breweryIdString") String breweryIdString,
             @RequestParam(value = "zip", required = false) String zip,
             @RequestParam(value = "locality", required = false) String locality,
             @RequestParam(value = "region", required = false) String region,
-            @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods,
+            @ModelAttribute("beerStyles") String beerStyles, 
+            @ModelAttribute("moods") String moods,
             @ModelAttribute("styleNames") String styleNames)
 
     {
         ModelAndView mav = new ModelAndView("details");
-        // List<Beer> beers = beerApiService.findBeers();
-        // List<Beer> beers2 = beerApiService.findBeersByBreweries(breweryIdString);
-        // List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip,
-        // locality, region);
         List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
         List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
-        List<Double> recommendedBeersAbv = new ArrayList<>();
-        List<Double> recommendedBeersIbu = new ArrayList<>();
-
-        
-        //with recommended beer list populated, sort beers based on mood
-        if ("Happy".equals(moods))
-        {
-            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
-        }
-        if ("Stoic".equals(moods))
-        {
-            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
-        }
-        
-        if ("Awestruck".equals(moods))
-        {
-            Collections.sort(recommendedBeers, new BeersByLowAbvAndLowIbuComparator());
-        }
         
 
-
-        // List<Beer> beerId = null;
-        // String breweryIdContainer = "";
-        // Map<String, List<Beer>> beerMap = new HashMap<>();
-        // for (int i = 0; i < breweries.size(); i++) {
-        // Brewery brewery = breweries.get(i);
-        // breweryIdContainer = breweries.get(i).getBreweryIdString();
-        // beersByBrewery =
-        // beerApiService.findBeersByBreweries(brewery.getBreweryIdString());
-        // //System.out.println("Brewery ID String: " + brewery.getBreweryIdString());
-        // test.put(breweryIdContainer, beersByBrewery);
-        // }
-        // mav.addObject("beerMap", beerMap);
-        // mav.addObject("beers", beers);
-        // mav.addObject("breweries", beers2);
         mav.addObject("recommendedBeers", recommendedBeers);
         mav.addObject("beersByBrewery", beersByBrewery);
         return mav;
-
     }
-    // @RequestMapping("/searchStyle")
-    // public ModelAndView searchStyle(@RequestParam("styleSearch") String
-    // styleSearch) {
-    // List<Style> styles = searchApiService.randomStyle(styleSearch);
-    // return new ModelAndView("searchResults", "styles", styles);
-    // }
+   
     
     private List<Beer> filterBeers(List<Beer> all, String moods, String beerStyles) {
         List<Beer> recommendedBeers = new ArrayList<>();

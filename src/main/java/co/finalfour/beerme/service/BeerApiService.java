@@ -79,6 +79,11 @@ public class BeerApiService {
 					queryValue = region;
 				} 
 				
+				if ((postalCode == "") && (locality == "") && (region == ""))
+				{
+				    return null;
+				}
+				
 				String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")	
 				.queryParam(queryKey, queryValue)
 				.queryParam("key", key)
