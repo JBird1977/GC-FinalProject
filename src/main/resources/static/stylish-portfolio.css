@@ -23,15 +23,15 @@
 }
 
 .child-div{
-	left: 582px;
+	left: 475px;
 	position: absolute;
 }
 
 
  .parent-div{
  
-  top: 90px;
-  left: 600px;
+  top: 175px;
+  left: 500px;
   position: absolute;
  }
 .center-div{
@@ -75,7 +75,7 @@ html {
 #bodyBackground {
 	
 	position: relative;
-	background-image: url(/images/beerSuds.jpg);
+	background-image: url(/images/offrightBeer.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Source Sans Pro';
