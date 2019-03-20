@@ -81,7 +81,7 @@ public class BeerMeController
         
         if (breweries == null)
         {
-            redir.addFlashAttribute("message", "Please enter a location");
+            redir.addFlashAttribute("message", "Please enter a valid location");
             return new ModelAndView("redirect:/");
         }
         

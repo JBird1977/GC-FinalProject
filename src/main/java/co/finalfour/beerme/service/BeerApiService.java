@@ -67,8 +67,10 @@ public class BeerApiService {
 		
 				String queryKey = "";
 				String queryValue = "";
+				int postalInt = 0;
 				
 				if (postalCode != "") {
+				    postalInt = Integer.parseInt(postalCode);
 					queryKey = "postalCode";
 					queryValue = postalCode;
 				} else if (locality != "") {
@@ -83,6 +85,12 @@ public class BeerApiService {
 				{
 				    return null;
 				}
+				
+				if (!(postalInt >= 10000 && postalInt <= 99999 ))
+				{
+				    return null;
+				}
+				
 				
 				String url = UriComponentsBuilder.fromHttpUrl("http://api.brewerydb.com/v2/locations/")	
 				.queryParam(queryKey, queryValue)
