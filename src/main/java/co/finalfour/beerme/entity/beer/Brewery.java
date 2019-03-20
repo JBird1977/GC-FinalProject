@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-public class Brewery{
+public class Brewery {
 	
     @JsonIgnore
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)

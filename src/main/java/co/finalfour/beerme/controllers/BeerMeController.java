@@ -78,29 +78,38 @@ public class BeerMeController
         List<Beer> beersByBrewery = null;
         String breweryIdContainer = "";
         List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
+        
         if (breweries == null)
         {
             redir.addFlashAttribute("message", "Please enter a location");
             return new ModelAndView("redirect:/");
         }
+        
+        List<Brewery> breweries2 = new ArrayList<>();
+        	for(int i = 0; i<breweries.size(); i++) {
+        		if(breweries.get(i).getLocationType().toLowerCase().contains("micro"))
+        			breweries2.add(breweries.get(i));
+        	}
+        
         Map<String, List<Beer>> beerMap = new HashMap<>();       
         for (int i = 0; i < breweries.size(); i++)
         {
             Brewery brewery = breweries.get(i);
             breweryIdContainer = breweries.get(i).getBreweryIdString();
-            System.out.println("AAAAAAAAA");
-            System.out.println(brewery.getLocationType());
-            //System.out.println(breweryIdContainer);
+            
+            if(brewery.getLocationType().toLowerCase().contains("micro")) {
+            System.out.println("HI!!!!!!!!!!");
             beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());          
             List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
             beerMap.put(breweryIdContainer, recommendedBeers);
-            
+            }
+            System.out.println(i+brewery.getLocationType());
         }
         
         breweries.sort(new BreweryComparator(beerMap));
         
         mav.addObject("mapOfBeerBrew", beerMap);
-        mav.addObject("breweries", breweries);
+        mav.addObject("breweries", breweries2);
         return mav;
     }
 
