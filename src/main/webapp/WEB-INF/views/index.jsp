@@ -9,7 +9,8 @@
 <link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
 <title>Beer Me</title>
 </head>
-<body id="body">
+<body id="bodyBackground">
+
 <%@include file="partials/header.jsp"%>
 Test of body class css.
 <p id ="p-preform"> Test of paragraph css </p>

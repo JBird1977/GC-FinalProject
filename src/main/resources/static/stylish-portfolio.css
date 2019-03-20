@@ -32,6 +32,17 @@ html {
   
 }
 
+#bodyBackground {
+	background-image: url(/images/BeerStockImage.jpeg);
+	
+
+	background-repeat: no-repeat;
+	background-size: 50%;
+  font-family: 'Source Sans Pro';
+  text-align:'center';
+  alight-items: center;
+  
+}
 #p-preform {
 	color:red;
 	text-align:'center';

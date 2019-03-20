@@ -15,8 +15,9 @@
 <header>
 
 	
-			<a href="/index">Home</a>
+			<a href="/">Home</a>
 			<a href="/favorites">Favorites</a>
+			<a href="/aboutUs">About Us</a>
 	
 </header>
 </html>
