@@ -6,13 +6,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/lux/bootstrap.min.css" rel="stylesheet" >
+<link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
 <title>Beer Me</title>
 </head>
-<body>
+<body id="bodyBackground">
+
+<%@include file="partials/header.jsp"%>
+
+<div class = "parent-div">
+<div class = "center-div">
+
+
 <form action = "/results" method=post>
 
-<p> 
+
+<p id = "p-preform"> 
 Mood <select name="moods">
     <c:forEach var="moods" items="${moods}">
     <option id="mood" value ="${moods}" >"${moods}"</option>
@@ -20,25 +28,29 @@ Mood <select name="moods">
     </select>
 </p>
 
-<p> 
+<p id = "p-preform"> 
 Style <select name="beerStyles">
     <c:forEach var="beerStyles" items="${beerStyles}">
     <option value ="${beerStyles}" >"${beerStyles}"</option>
     </c:forEach>
     </select>
 </p>
-<p>
+<p id = "p-preform">
 Simpler Style<select name="styleNames">
 <c:forEach var="styleName" items="${styleName}">
 <option value = "${styleName}" > "${styleName}"</option>
 </c:forEach>
 </select>
 </p>
-<p>Zip Code <input type="text" name="zip"/></p>
-<p>City <input type="text" name="locality"/></p>
-<p>State <input type="text" name="region"/></p>
+<p id = "p-preform">Zip Code <input type="text" name="zip"/></p>
+<p id = "p-preform">City <input type="text" name="locality"/></p>
+<p id = "p-preform">State <input type="text" name="region"/></p>
 
-<button type ="submit" class="btn btn-link">Beer Me!</button>
+<button id = "btn-primary" type ="submit" class="btn btn-primary">Beer Me!</button>
+
 </form>
+
+</div>
+</div>
 </body>
 </html>
