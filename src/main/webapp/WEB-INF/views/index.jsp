@@ -55,7 +55,7 @@ Simpler Style<select name="styleNames">
 <button id = "btn-primary" type ="submit" class="btn btn-primary">Beer Me!</button>
 
 </form>
-</span>
+
 </div>
 
 </body>
