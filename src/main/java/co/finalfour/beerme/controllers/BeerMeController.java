@@ -145,7 +145,7 @@ public class BeerMeController
     {
         ModelAndView mav = new ModelAndView("details");
         List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
-        List<Beer>  = filterBeers(beersByBrewery, moods, beerStyles);
+        List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
         
 
         mav.addObject("recommendedBeers", recommendedBeers);
