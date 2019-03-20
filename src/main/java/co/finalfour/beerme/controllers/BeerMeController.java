@@ -23,6 +23,7 @@ import co.finalfour.beerme.entity.beer.Beer;
 import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
 import co.finalfour.beerme.entity.beer.BeersByLowAbvAndLowIbuComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
+import co.finalfour.beerme.entity.beer.BreweryComparator;
 import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.service.BeerApiService;
 
@@ -65,13 +66,13 @@ public class BeerMeController
     }
 
     @PostMapping("/results")
-    public ModelAndView results(@RequestParam(value = "zip", required = false) String zip,
+    public ModelAndView results(
+            @RequestParam(value = "zip", required = false) String zip,
             @RequestParam(value = "locality", required = false) String locality,
             @RequestParam(value = "region", required = false) String region,
             @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods,
             @ModelAttribute("styleName") String styleName,
             HttpSession session, RedirectAttributes redir)
-
     {
         ModelAndView mav = new ModelAndView("results");
         List<Beer> beersByBrewery = null;
@@ -92,6 +93,9 @@ public class BeerMeController
             List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
             beerMap.put(breweryIdContainer, recommendedBeers);
         }
+        
+        breweries.sort(new BreweryComparator(beerMap));
+        
         mav.addObject("mapOfBeerBrew", beerMap);
         mav.addObject("breweries", breweries);
         return mav;
@@ -157,7 +161,8 @@ public class BeerMeController
     }
    
     
-    private List<Beer> filterBeers(List<Beer> all, String moods, String beerStyles) {
+    private List<Beer> filterBeers(List<Beer> all, String moods, String beerStyles) 
+    {
         List<Beer> recommendedBeers = new ArrayList<>();
         for (Beer beer : all)
         {
