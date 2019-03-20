@@ -8,22 +8,24 @@
 <link href= "/stylish-portfolio.css" type= "text/css" rel="stylesheet" >
 <title>Favorite Beers</title>
 </head>
-<body id="bodyBackground">
+<body id="bodyBackgroundFav">
 <%@include file="partials/header.jsp"%>
-
+<div class = "parent-div">
 <div>
+	
 	<c:choose>
 		<c:when test="${ not empty action }">
 			${ name } ${ action }
 		</c:when>
 		<c:otherwise>
-			Places to be & Beers to drink...
+			<p id ="p-preform">Places to be & Beers to drink...</p>
 		</c:otherwise>
 	</c:choose>
 </div>
 <div>
 	<c:forEach var="beer" items="${ beers }">
 		<ul>
+		
 			<li>Rating: 
 				<c:choose>
 					<c:when test="${ not empty beer.rating }">
@@ -34,7 +36,8 @@
 						<a href="/beer/${ beer.beerId }/2/ratingUpdate"> 2 </a>
 						<a href="/beer/${ beer.beerId }/3/ratingUpdate"> 3 </a>
 						<a href="/beer/${ beer.beerId }/4/ratingUpdate"> 4 </a>
-						<a href="/beer/${ beer.beerId }/5/ratingUpdate"> 5 </a>
+						<a href="/beer/${ beer.beerId }/5/ratingUpdate"> 5 </a> 
+						
 					</c:otherwise>
 				</c:choose>
 				<a href="/beer/${ beer.beerId }/delete">delete</a>
@@ -82,8 +85,10 @@
 			</li>		
 		</ul>
 	</c:forEach>
+	
 	<div>Return <a href="/">home</a>.</div>
 	<div>Return to <a href="/test">test</a>.</div>
+</div>
 </div>
 </body>
 </html>

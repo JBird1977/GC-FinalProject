@@ -45,6 +45,12 @@ public class BeerMeController
         mav.addObject("ingredients", ingredients);
         return mav;
     }
+    @RequestMapping("/aboutUs")
+    public ModelAndView aboutUs()
+    {
+        return new ModelAndView("aboutUs");
+
+    }
 
     @RequestMapping("/")
     public ModelAndView index()
