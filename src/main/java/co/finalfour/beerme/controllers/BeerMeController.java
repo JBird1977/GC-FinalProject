@@ -88,10 +88,13 @@ public class BeerMeController
         {
             Brewery brewery = breweries.get(i);
             breweryIdContainer = breweries.get(i).getBreweryIdString();
-            System.out.println(breweryIdContainer);
+            System.out.println("AAAAAAAAA");
+            System.out.println(brewery.getLocationType());
+            //System.out.println(breweryIdContainer);
             beersByBrewery = beerApiService.findBeersByBreweries(brewery.getBreweryIdString());          
             List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
             beerMap.put(breweryIdContainer, recommendedBeers);
+            
         }
         
         breweries.sort(new BreweryComparator(beerMap));

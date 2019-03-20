@@ -34,7 +34,16 @@ public class Brewery{
    	@Column(name="objBreweryDescription") @Type(type="text")
    	private String description;	
    	private String createDate;
-   	@ElementCollection 
+   	private String locationType;
+   	public String getLocationType() {
+		return locationType;
+	}
+
+	public void setLocationType(String locationType) {
+		this.locationType = locationType;
+	}
+
+	@ElementCollection 
    	private List<Location> locations;  
    	@Column(name="objBreweryStatus")
    	private String status;
@@ -257,14 +266,16 @@ public class Brewery{
 	@Override
 	public String toString() {
 		return "Brewery [breweryId=" + breweryId + ", id=" + id + ", name=" + name + ", description=" + description
-				+ ", createDate=" + createDate + ", locations=" + locations + ", status=" + status + ", statusDisplay="
-				+ statusDisplay + ", updateDate=" + updateDate + ", website=" + website + ", isOrganic=" + isOrganic
-				+ ", socialAccounts=" + socialAccounts + ", withSocialAccounts=" + withSocialAccounts
-				+ ", brewersAssociation=" //+ brewersAssociation
-				+ ", withGuilds=" + withGuilds + ", withLocations="
+				+ ", createDate=" + createDate + ", locationType=" + locationType + ", locations=" + locations
+				+ ", status=" + status + ", statusDisplay=" + statusDisplay + ", updateDate=" + updateDate
+				+ ", website=" + website + ", isOrganic=" + isOrganic + ", socialAccounts=" + socialAccounts
+				+ ", withSocialAccounts=" + withSocialAccounts + ", withGuilds=" + withGuilds + ", withLocations="
 				+ withLocations + ", alternativeNames=" + alternativeNames + ", withAlternativeNames="
 				+ withAlternativeNames + ", established=" + established + ", rating=" + rating + ", breweryIdString="
 				+ breweryIdString + ", beers=" + beers + "]";
 	}
+
+	
+	
 	
 }
