@@ -93,7 +93,10 @@ html {
 	text-align: 'center';
 	alight-items: center;
 	}
-	
+#p-message {
+	color : #FF0000; 
+    background : yellow;	
+}
 #p-preform {
 	color: red;
 	

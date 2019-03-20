@@ -16,7 +16,7 @@
 <div class = "parent-div">
 <div class = "center-div">
 
-
+<p id="p-message" class="message">${ message }</p>
 <form action = "/results" method=post>
 
 

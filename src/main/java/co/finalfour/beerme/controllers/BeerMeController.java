@@ -1,10 +1,11 @@
 package co.finalfour.beerme.controllers;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,12 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
-import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
-import co.finalfour.beerme.entity.beer.BeersByLowAbvAndLowIbuComparator;
-import co.finalfour.beerme.entity.beer.BeersByLowAbvComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.service.BeerApiService;
@@ -67,7 +66,8 @@ public class BeerMeController
             @RequestParam(value = "locality", required = false) String locality,
             @RequestParam(value = "region", required = false) String region,
             @ModelAttribute("beerStyles") String beerStyles, @ModelAttribute("moods") String moods,
-            @ModelAttribute("styleName") String styleName)
+            @ModelAttribute("styleName") String styleName,
+            HttpSession session, RedirectAttributes redir)
 
     {
         ModelAndView mav = new ModelAndView("results");
@@ -76,6 +76,7 @@ public class BeerMeController
         List<Brewery> breweries = beerApiService.findBreweriesByLocation(zip, locality, region);
         if (breweries == null)
         {
+            redir.addFlashAttribute("message", "Please enter a location");
             return new ModelAndView("redirect:/");
         }
         Map<String, List<Beer>> beerMap = new HashMap<>();       
@@ -144,7 +145,7 @@ public class BeerMeController
     {
         ModelAndView mav = new ModelAndView("details");
         List<Beer> beersByBrewery = beerApiService.findBeersByBreweries(breweryIdString);
-        List<Beer> recommendedBeers = filterBeers(beersByBrewery, moods, beerStyles);
+        List<Beer>  = filterBeers(beersByBrewery, moods, beerStyles);
         
 
         mav.addObject("recommendedBeers", recommendedBeers);
