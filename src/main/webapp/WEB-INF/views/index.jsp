@@ -10,7 +10,7 @@
 <title>Beer Me</title>
 </head>
 <body id="bodyBackground">
-
+<h1 align="center">Beer Me!</h1>
 <%@include file="partials/header.jsp"%>
 
 <div class = "parent-div">
@@ -35,13 +35,13 @@ Style <select name="beerStyles">
     </c:forEach>
     </select>
 </p>
-<p id = "p-preform">
+<!-- <p id = "p-preform">
 Simpler Style<select name="styleNames">
 <c:forEach var="styleName" items="${styleName}">
 <option value = "${styleName}" > "${styleName}"</option>
 </c:forEach>
 </select>
-</p>
+</p> -->
 <p id = "p-preform">Zip Code <input type="text" name="zip"/></p>
 <p id = "p-preform">City <input type="text" name="locality"/></p>
 <p id = "p-preform">State <input type="text" name="region"/></p>

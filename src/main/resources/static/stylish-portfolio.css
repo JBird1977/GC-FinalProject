@@ -23,7 +23,7 @@
 }
 
 .child-div{
-	left: 475px;
+	left: 600px;
 	position: absolute;
 }
 
@@ -133,7 +133,15 @@ html {
   text-transform: uppercase;
 }
 
-h1,
+h1 
+{
+ position: relative;
+ color: white;
+ align-items: center;
+ justify-content: center;
+}
+
+
 h2,
 h3,
 h4,

@@ -12,8 +12,9 @@
 <%@include file="partials/header.jsp"%>
 
 <p>Based on your mood and location:</p>
-	<h5>${beerStyles}</h5>
-	<h5>${moods}</h5>
+<p>Mood: ${moods}</p>
+<p>Style: ${beerStyles}</p>
+	
 	
 <!--   <h5>${beerStyles}</h5>
     <h5>${moods}</h5>
@@ -23,10 +24,6 @@
 <p>  Social Butterfly =  IBU < 30 and ABV >8      </p>
 <p></p>
 -->
-
-
-<h5>Details</h5>
-
 <h3>Recommended Beers</h3>
  <ul style="list-style: none;">
      <c:forEach var="beer" items="${ recommendedBeers }">
