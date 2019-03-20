@@ -27,12 +27,12 @@
      
  	padding: 10px;
  	border: 5px solid black;
- 
+ 	background-color:rgba(0, 0, 0, 0.5);
 
 	
 
-}
 
+}
 
 html {
   width: 100%;
@@ -46,11 +46,12 @@ html {
   alight-items: center;
   
   
+  
 }
 
 #bodyBackground {
 	
-	background-color:rgba(0, 0, 0, 0.75);
+	position: relative;
 	background-image: url(/images/beerSuds.jpg);
 	
 
@@ -389,11 +390,14 @@ a:hover, a:focus, a:active {
   background-color: #1D809F !important;
   border-color: #1D809F !important;
   color: #fff !important;
+  margin-left: 75px;
+  
 }
 
 #btn-primary:hover, #btn-primary:focus, #btn-primary:active {
   background-color: #155d74 !important;
   border-color: #155d74 !important;
+  margin-left: 75px;
 }
 
 .btn-secondary {

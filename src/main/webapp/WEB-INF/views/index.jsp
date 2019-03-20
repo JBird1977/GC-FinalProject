@@ -21,12 +21,12 @@ I AM IN GREAT PAIN
 
 
 <div class = "center-div">
-<span class = "spanBorder">
+
 
 <form action = "/results" method=post>
 
 
-<p> 
+<p id = "p-preform"> 
 Mood <select name="moods">
     <c:forEach var="moods" items="${moods}">
     <option id="mood" value ="${moods}" >"${moods}"</option>
@@ -34,23 +34,23 @@ Mood <select name="moods">
     </select>
 </p>
 
-<p> 
+<p id = "p-preform"> 
 Style <select name="beerStyles">
     <c:forEach var="beerStyles" items="${beerStyles}">
     <option value ="${beerStyles}" >"${beerStyles}"</option>
     </c:forEach>
     </select>
 </p>
-<p>
+<p id = "p-preform">
 Simpler Style<select name="styleNames">
 <c:forEach var="styleName" items="${styleName}">
 <option value = "${styleName}" > "${styleName}"</option>
 </c:forEach>
 </select>
 </p>
-<p>Zip Code <input type="text" name="zip"/></p>
-<p>City <input type="text" name="locality"/></p>
-<p>State <input type="text" name="region"/></p>
+<p id = "p-preform">Zip Code <input type="text" name="zip"/></p>
+<p id = "p-preform">City <input type="text" name="locality"/></p>
+<p id = "p-preform">State <input type="text" name="region"/></p>
 
 <button id = "btn-primary" type ="submit" class="btn btn-primary">Beer Me!</button>
 
