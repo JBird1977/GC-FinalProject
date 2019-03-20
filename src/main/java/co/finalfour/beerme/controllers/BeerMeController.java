@@ -1,6 +1,7 @@
 package co.finalfour.beerme.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
+import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
+import co.finalfour.beerme.entity.beer.BeersByLowAbvAndLowIbuComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.Ingredient;
 import co.finalfour.beerme.service.BeerApiService;
@@ -188,9 +191,22 @@ public class BeerMeController
                     recommendedBeers.add(beer);
                 }
 
-            }
-
+            }   
         }
+        //with recommended beers populated we can now sort beers by mood
+        if ("Happy".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        if ("Stoic".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+        }
+        
+        if ("Awestruck".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByLowAbvAndLowIbuComparator());
+}
         return recommendedBeers;
     }
 } 

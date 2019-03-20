@@ -26,7 +26,7 @@
 		
 		<ul>	
 		  <c:forEach var="info" items="${mapOfBeerBrew[brewery.breweryIdString]}">     
-                <li>${info.name }</li>             
+                <li>${info.name } ${info.abv}</li>             
 		  </c:forEach>
 	    </ul>
 	 </c:forEach>
