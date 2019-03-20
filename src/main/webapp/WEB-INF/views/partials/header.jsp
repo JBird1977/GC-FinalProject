@@ -9,7 +9,7 @@
 <head>
 
 <link rel="stylesheet" type= "text/css" href="/stylish-portfolio.css" />
-<meta charset=UTF-8">
+<meta charset=UTF-8>
 </head>
 
 <header>

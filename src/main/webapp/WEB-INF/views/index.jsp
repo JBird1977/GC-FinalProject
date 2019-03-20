@@ -19,7 +19,10 @@ Test of body class css.
 I AM IN GREAT PAIN
 <a href = "/favorites"> Go to Favorites</a>
 
+
 <div class = "center-div">
+<span class = "spanBorder">
+
 <form action = "/results" method=post>
 
 
@@ -52,6 +55,8 @@ Simpler Style<select name="styleNames">
 <button id = "btn-primary" type ="submit" class="btn btn-primary">Beer Me!</button>
 
 </form>
+</span>
 </div>
+
 </body>
 </html>

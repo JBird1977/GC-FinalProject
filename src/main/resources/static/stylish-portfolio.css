@@ -3,19 +3,34 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-stylish-portfolio/blob/master/LICENSE)
  */
+#spanBorder {
+	border-style: solid;
+}
+#form-form{
+	 background-color: white;
+	border-style: solid;
+}
+ 
 .center-div{
 	
 	
 	margin: auto;
-	width: 100px;
-	height: 100px;
+	width: 230px;
+	height: 300px;
 	
 	position: adsolute;
 
 	align-items: center;
-
-  justify-content: center;
 	
+  	justify-content: center;
+  
+     
+ 	padding: 10px;
+ 	border: 5px solid black;
+ 
+
+	
+
 }
 
 
@@ -30,14 +45,17 @@ html {
   text-align:'center';
   alight-items: center;
   
+  
 }
 
 #bodyBackground {
-	background-image: url(/images/BeerStockImage.jpeg);
+	
+	background-color:rgba(0, 0, 0, 0.75);
+	background-image: url(/images/beerSuds.jpg);
 	
 
 	background-repeat: no-repeat;
-	background-size: 50%;
+	background-size: cover;
   font-family: 'Source Sans Pro';
   text-align:'center';
   alight-items: center;
