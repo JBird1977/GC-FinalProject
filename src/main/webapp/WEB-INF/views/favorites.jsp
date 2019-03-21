@@ -44,12 +44,12 @@
 				<a href="/beer/${ beer.beerId }/delete">delete</a>
 			</li>
 			<li>Name: ${ beer.name }</li>
-			<dl>
+	<!-- 		<dl>
 				<dt>Ingredients</dt>
 				<c:forEach var="ingredient" items="${ beer.ingredients }">
 					<dd>${ ingredient }</dd>
 				</c:forEach>
-			</dl>
+			</dl> -->
 		</ul>
 	</c:forEach>
 </div>

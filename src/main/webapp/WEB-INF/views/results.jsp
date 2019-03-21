@@ -12,8 +12,8 @@
 <body id="bodyBackgroudBeer">
 <%@include file="partials/header.jsp"%>
 <p>Based on your mood and location:</p>
-    <h5>Mood: ${moods}</h5>
-    <h5>Style: ${beerStyles}</h5>
+    <p>Mood: ${moods}</p>
+    <p>Style: ${beerStyles}</p>
 <!-- 	<h5>${beerStyles}</h5>
 	<h5>${moods}</h5>
 <p> Happy = ABV > 8        </p>

@@ -20,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.finalfour.beerme.dao.BeerMeDao;
 import co.finalfour.beerme.entity.beer.Beer;
+import co.finalfour.beerme.entity.beer.BeersByHighAbvAndLowIbuComparator;
 import co.finalfour.beerme.entity.beer.BeersByHighAbvComparator;
+import co.finalfour.beerme.entity.beer.BeersByHighIbuComparator;
 import co.finalfour.beerme.entity.beer.BeersByLowAbvAndLowIbuComparator;
 import co.finalfour.beerme.entity.beer.Brewery;
 import co.finalfour.beerme.entity.beer.BreweryComparator;
@@ -213,13 +215,17 @@ public class BeerMeController
         }
         if ("Stoic".equals(moods))
         {
-            Collections.sort(recommendedBeers, new BeersByHighAbvComparator());
+            Collections.sort(recommendedBeers, new BeersByHighIbuComparator());
         }
         
         if ("Awestruck".equals(moods))
         {
             Collections.sort(recommendedBeers, new BeersByLowAbvAndLowIbuComparator());
-}
+        }
+        if ("Social Butterfly".equals(moods))
+        {
+            Collections.sort(recommendedBeers, new BeersByHighAbvAndLowIbuComparator());
+        }
         return recommendedBeers;
     }
 } 

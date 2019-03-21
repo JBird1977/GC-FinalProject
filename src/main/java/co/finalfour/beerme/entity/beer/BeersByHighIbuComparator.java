@@ -2,7 +2,7 @@ package co.finalfour.beerme.entity.beer;
 
 import java.util.Comparator;
 
-public class BeersByHighIbu implements Comparator<Beer>
+public class BeersByHighIbuComparator implements Comparator<Beer>
 {
     @Override
     public int compare(Beer a, Beer b)
